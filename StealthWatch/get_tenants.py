@@ -43,9 +43,9 @@ except:
 
 
 # Enter all authentication info
-SMC_USER = ""
-SMC_PASSWORD = ""
-SMC_HOST = ""
+SMC_USER = "admin"
+SMC_PASSWORD = "WWTwwt1!"
+SMC_HOST = "192.168.128.109"
 
 # Set the URL for SMC login
 url = "https://" + SMC_HOST + "/token/v2/authenticate"
