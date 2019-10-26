@@ -13,7 +13,6 @@ except:
 SMC_USER = "admin"
 SMC_PASSWORD = "WWTwwt1!"
 SMC_HOST = "192.168.128.109"
-SMC_TENANT_ID = "102"
 
 def get(api_session, url, payload):
     # Perform the POST request to login
@@ -42,6 +41,22 @@ def post(api_session, url, payload):
 
     return status, content
 
+def getTenantId(api_session):
+    # Get the list of tenants (domains) from the SMC
+    url = 'https://' + SMC_HOST + '/sw-reporting/v1/tenants/'
+    response = api_session.request("GET", url, verify=False)
+    print('query url=' + url)
+    print('  response=' + str(response))
+
+    # If successfully able to get list of tenants (domains)
+    if (response.status_code == 200):
+        # Store the tenant (domain) ID as a variable to use later
+        tenant_list = json.loads(response.content)["data"]
+        tenant_id = tenant_list[0]["id"]
+
+        return tenant_id
+    return None
+
 if __name__ == '__main__':
 
     # Initialize the Requests session
@@ -57,6 +72,12 @@ if __name__ == '__main__':
 
     if status != 200:
         print("An error has ocurred, while logging in, with the following code {}".format(status))
+        exit(0)
+
+    # Get tenant Id
+    tenant_id = getTenantId(api_session)
+    if tenant_id is None:
+        print("Can not get a tenant Id.")
         exit(0)
 
     # Print the menu
@@ -80,7 +101,7 @@ if __name__ == '__main__':
             sys.exit()
 
         # Add a tag (host group)
-        url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + SMC_TENANT_ID + '/tags'
+        url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + str(tenant_id) + '/tags'
         request_data = [
             {
                 "name": host_group_name,
