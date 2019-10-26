@@ -15,7 +15,7 @@ SMC_PASSWORD = "WWTwwt1!"
 SMC_HOST = "192.168.128.109"
 SMC_TENANT_ID = "102"
 
-def login(api_session, url, payload):
+def get(api_session, url, payload):
     # Perform the POST request to login
     response = api_session.request("POST", url, verify=False, data=payload)
 
@@ -27,7 +27,7 @@ def login(api_session, url, payload):
 
     return status, content
 
-def query(api_session, url, payload):
+def post(api_session, url, payload):
 
     request_headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     response = api_session.request("POST", url, verify=False, data=json.dumps(payload), headers=request_headers)
@@ -53,7 +53,7 @@ if __name__ == '__main__':
         "username": SMC_USER,
         "password": SMC_PASSWORD
     }
-    status, content = login(api_session, url, login_request_data)
+    status, content = get(api_session, url, login_request_data)
 
     if status != 200:
         print("An error has ocurred, while logging in, with the following code {}".format(status))
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     # Print the menu
     print("""
-            Stealth Watch Host Group Management
+                 Stealth Watch Management
               ACME Inc, IT Security Department
 
         Use this interface to manage the host group.    
@@ -92,7 +92,7 @@ if __name__ == '__main__':
             }
         ]
 
-        status, content = query(api_session, url, request_data)
+        status, content = post(api_session, url, request_data)
         if (status == 200):
             print("New tag (host group) successfully added")
         else:
