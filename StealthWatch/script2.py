@@ -112,7 +112,7 @@ if __name__ == '__main__':
             if not subject_host_group:
                 sys.exit()
 
-            subject_id = tag2Id(subject_host_group)
+            subject_id = tag2Id(api_session, subject_host_group)
             if subject_id is not None:
                 break
             print("Invalid subject host group")
@@ -124,55 +124,56 @@ if __name__ == '__main__':
             if not peer_host_group:
                 sys.exit()
 
-            peer_id = tag2Id(peer_host_group)
+            peer_id = tag2Id(api_session, peer_host_group)
             if peer_id is not None:
                 break
             print("Invalid peer host group")
 
         # Add a policy
         url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + SMC_TENANT_ID + '/policy/customEvents'
-        request_data = [
-            {
-                "name": policy_name,
-                "summary": "When " + policy_name + ", an alarm is raised",
-                "subject": {
-                    "tags": {
-                        "excludes": [],
-                        "includes": [
-                            subject_id
-                        ]
-                    },
-                    "orientation": "either"
+        request_data = {
+            "name": policy_name,
+            "summary": "When " + policy_name + ", an alarm is raised",
+            "subject": {
+                "tags": {
+                    "excludes": [],
+                    "includes": [
+                        str(subject_id)
+                    ]
                 },
-                "peer": {
-                    "tags": {
-                        "excludes": [],
-                        "includes": [
-                            peer_id
-                        ]
-                    }
-                },
-                "domainId": SMC_TENANT_ID
-            }
-        ]
+                "orientation": "either"
+            },
+            "peer": {
+                "tags": {
+                    "excludes": [],
+                    "includes": [
+                        str(peer_id)
+                    ]
+                }
+            },
+            "domainId": SMC_TENANT_ID
+        }
 
         status, content = post(api_session, url, request_data)
         if (status == 200):
             print("New tag (host group) successfully added")
         else:
             print("An error has ocurred, while adding tags (host groups), with the following code {}".format(status))
+            continue
 
-        policy_id = 23;
+        json_data = json.loads(content)
+        policy_id = json_data["data"]["customSecurityEvents"]["id"]
 
         # Enable the policy just added
         datetime = datetime.datetime.utcnow()
         timestamp = datetime.strftime('%Y-%m-%dT%H:%M:%S.000')
 
-        url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + SMC_TENANT_ID + '/policy/customEvents/' + peer_id + '/enable'
+        url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + SMC_TENANT_ID + '/policy/customEvents/' + str(policy_id) + '/enable'
         request_data = { "timestamp": timestamp }
 
-        status, content = post(api_session, url, request_data)
+        status, content = put(api_session, url, request_data)
         if (status == 200):
-            print("New tag (host group) successfully added")
+            print("New host group successfully added. You can only enable it on MSc.")
         else:
             print("An error has ocurred, while adding tags (host groups), with the following code {}".format(status))
+
