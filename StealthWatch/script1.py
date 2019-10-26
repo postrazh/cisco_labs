@@ -64,7 +64,7 @@ if __name__ == '__main__':
             Stealth Watch Host Group Management
               ACME Inc, IT Security Department
 
-            Use this interface to host group.    
+        Use this interface to manage the host group.    
     """)
 
     # Loop forever
