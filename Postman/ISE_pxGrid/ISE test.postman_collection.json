@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "901ddde8-4fc9-40e6-a18e-ac5a9ab1e2eb",
+		"name": "ISE test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AccountCreate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nodeName\":\"ise24198\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ise24.acme.local:8910/pxgrid/control/AccountCreate",
+					"protocol": "https",
+					"host": [
+						"ise24",
+						"acme",
+						"local"
+					],
+					"port": "8910",
+					"path": [
+						"pxgrid",
+						"control",
+						"AccountCreate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AccountActivate",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ekMynr9Zu1rpqgqj",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ise24198",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}"
+				},
+				"url": {
+					"raw": "https://ise24.acme.local:8910/pxgrid/control/AccountActivate",
+					"protocol": "https",
+					"host": [
+						"ise24",
+						"acme",
+						"local"
+					],
+					"port": "8910",
+					"path": [
+						"pxgrid",
+						"control",
+						"AccountActivate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ServiceLookup",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ekMynr9Zu1rpqgqj",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ise24198",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\":\"com.cisco.ise.session\"\r\n}"
+				},
+				"url": {
+					"raw": "https://ise24.acme.local:8910/pxgrid/control/ServiceLookup",
+					"protocol": "https",
+					"host": [
+						"ise24",
+						"acme",
+						"local"
+					],
+					"port": "8910",
+					"path": [
+						"pxgrid",
+						"control",
+						"ServiceLookup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AccessSecret",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ekMynr9Zu1rpqgqj",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ise24198",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"peerNodeName\": \"ise-admin-ise24\"\n\t\n}"
+				},
+				"url": {
+					"raw": "https://ise24.acme.local:8910/pxgrid/control/AccessSecret",
+					"protocol": "https",
+					"host": [
+						"ise24",
+						"acme",
+						"local"
+					],
+					"port": "8910",
+					"path": [
+						"pxgrid",
+						"control",
+						"AccessSecret"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEndpoints",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Av7upxUx0wYXGwYg",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ise24198",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n}"
+				},
+				"url": {
+					"raw": "https://ise24.acme.local:8910/pxgrid/ise/config/anc/getEndpoints",
+					"protocol": "https",
+					"host": [
+						"ise24",
+						"acme",
+						"local"
+					],
+					"port": "8910",
+					"path": [
+						"pxgrid",
+						"ise",
+						"config",
+						"anc",
+						"getEndpoints"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

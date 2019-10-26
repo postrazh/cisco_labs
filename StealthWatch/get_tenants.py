@@ -62,12 +62,17 @@ api_session = requests.Session()
 # Perform the POST request to login
 response = api_session.request("POST", url, verify=False, data=login_request_data)
 
+print('query url=' + url)
+print('  response=' + str(response))
+
 # If the login was successful
 if(response.status_code == 200):
 
     # Get the list of tenants (domains) from the SMC
     url = 'https://' + SMC_HOST + '/sw-reporting/v1/tenants/'
     response = api_session.request("GET", url, verify=False)
+    print('query url=' + url)
+    print('  response=' + str(response))
 
     # If successfully able to get list of tenants (domains)
     if (response.status_code == 200):

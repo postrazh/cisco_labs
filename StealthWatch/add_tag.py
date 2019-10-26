@@ -63,6 +63,9 @@ api_session = requests.Session()
 # Perform the POST request to login
 response = api_session.request("POST", url, verify=False, data=login_request_data)
 
+print('query url=' + url)
+print('  response=' + response.text)
+
 # If the login was successful
 if(response.status_code == 200):
 
@@ -92,6 +95,11 @@ if(response.status_code == 200):
     request_headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     response = api_session.request("POST", url, verify=False, data=json.dumps(request_data), headers=request_headers)
 
+    json_data = json.loads(response.text)
+
+    print('query url=' + url)
+    print('  response=' + response.text)
+
     # If successfully able to add the tag (host group)
     if (response.status_code == 200):
         print("New tag (host group) successfully added")
@@ -100,7 +108,11 @@ if(response.status_code == 200):
     else:
         print("An error has ocurred, while adding tags (host groups), with the following code {}".format(response.status_code))
 
+    # TODO : not work, can resolve by web capturing
     uri = 'https://' + SMC_HOST + '/token'
+    response = api_session.delete(uri, timeout=30, verify=False)
+
+    print('query uri=' + uri)
     response = api_session.delete(uri, timeout=30, verify=False)
 
 # If the login was unsuccessful

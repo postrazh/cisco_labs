@@ -43,10 +43,10 @@ except:
 
 
 # Enter all authentication info
-SMC_USER = ""
-SMC_PASSWORD = ""
-SMC_HOST = ""
-SMC_TENANT_ID = ""
+SMC_USER = "admin"
+SMC_PASSWORD = "WWTwwt1!"
+SMC_HOST = "192.168.128.109"
+SMC_TENANT_ID = "102"
 
 # Set the URL for SMC login
 url = "https://" + SMC_HOST + "/token/v2/authenticate"
@@ -63,12 +63,18 @@ api_session = requests.Session()
 # Perform the POST request to login
 response = api_session.request("POST", url, verify=False, data=login_request_data)
 
+print('query url=' + url)
+print('  response=' + str(response))
+
 # If the login was successful
 if(response.status_code == 200):
 
     # Get the list of tags (host groups) from the SMC
     url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + SMC_TENANT_ID + '/tags/'
     response = api_session.request("GET", url, verify=False)
+
+    print('query url=' + url)
+    print('  response=' + str(response))
 
     # If successfully able to get list of tags (host groups)
     if (response.status_code == 200):
@@ -84,6 +90,9 @@ if(response.status_code == 200):
 
     uri = 'https://' + SMC_HOST + '/token'
     response = api_session.delete(uri, timeout=30, verify=False)
+
+    print('query url=' + url)
+    print('  response=' + str(response))
 
 # If the login was unsuccessful
 else:
