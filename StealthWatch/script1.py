@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 
 import requests
 import json
@@ -58,22 +59,42 @@ if __name__ == '__main__':
         print("An error has ocurred, while logging in, with the following code {}".format(status))
         exit(0)
 
-    # Add a tag (host group)
-    url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + SMC_TENANT_ID + '/tags'
-    request_data = [
-        {
-            "name": "G9",
-            "location": "INSIDE",
-            "ranges": [
-                "149.202.170.60",
-            ],
-            "parentId": 1
-        }
-    ]
+    # Print the menu
+    print("""
+            Stealth Watch Host Group Management
+              ACME Inc, IT Security Department
 
-    status, content = query(api_session, url, request_data)
-    if (status == 200):
-        print("New tag (host group) successfully added")
-    else:
-        print("An error has ocurred, while adding tags (host groups), with the following code {}".format(status))
+            Use this interface to host group.    
+    """)
+
+    # Loop forever
+    while True:
+        host_group_name = input("  Enter the name of host group: ")
+        host_group_name = host_group_name.strip()
+        if not host_group_name:
+            sys.exit()
+
+        ip_address = input("  Enter the IP address associated with the host group: ")
+        ip_address = ip_address.strip()
+        if not ip_address:
+            sys.exit()
+
+        # Add a tag (host group)
+        url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + SMC_TENANT_ID + '/tags'
+        request_data = [
+            {
+                "name": host_group_name,
+                "location": "INSIDE",
+                "ranges": [
+                    ip_address,
+                ],
+                "parentId": 1
+            }
+        ]
+
+        status, content = query(api_session, url, request_data)
+        if (status == 200):
+            print("New tag (host group) successfully added")
+        else:
+            print("An error has ocurred, while adding tags (host groups), with the following code {}".format(status))
 
