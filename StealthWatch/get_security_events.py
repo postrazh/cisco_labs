@@ -44,11 +44,11 @@ except:
 
 
 # Enter all authentication info
-SMC_USER = ""
-SMC_PASSWORD = ""
-SMC_HOST = ""
-SMC_TENANT_ID = ""
-MALICIOUS_IP = ""
+SMC_USER = "admin"
+SMC_PASSWORD = "WWTwwt1!"
+SMC_HOST = "192.168.128.109"
+SMC_TENANT_ID = "102"
+MALICIOUS_IP = "192.168.128.1"
 
 # Set the URL for SMC login
 url = "https://" + SMC_HOST + "/token/v2/authenticate"
@@ -73,7 +73,7 @@ if(response.status_code == 200):
 
     # Set the timestamps for the filters, in the correct format, for last 60 minutes
     end_datetime = datetime.datetime.utcnow()
-    start_datetime = end_datetime - datetime.timedelta(minutes=60)
+    start_datetime = end_datetime - datetime.timedelta(minutes=16000)
     end_timestamp = end_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
     start_timestamp = start_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
 
@@ -82,14 +82,16 @@ if(response.status_code == 200):
         "timeRange": {
             "from": start_timestamp,
             "to": end_timestamp
-        },
-        "hosts": [
-            {
-                "ipAddress": MALICIOUS_IP,
-                "type": "source"
-            }
-        ],
+        }
     }
+    #
+    # ,
+    # "hosts": [
+    #     {
+    #         "ipAddress": MALICIOUS_IP,
+    #         "type": "source"
+    #     }
+    # ],
 
     # Perform the query to initiate the search
     request_headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
