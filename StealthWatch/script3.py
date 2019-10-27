@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import csv
 import sys
 
 import requests
@@ -13,6 +14,8 @@ except:
 SMC_USER = "admin"
 SMC_PASSWORD = "WWTwwt1!"
 SMC_HOST = "192.168.128.109"
+
+CSV_FILE = 'alarming_hosts.csv'
 
 def postUrlEncoded(api_session, url, payload):
     # Perform the POST request to login
@@ -131,16 +134,22 @@ if __name__ == '__main__':
 
     results = json.loads(response.content)["data"]["data"]
 
-    # Filter out the valid items and print it
+    # Loop the alarming hosts
     print("  Ip Address\t\t\tHost Group\t\t\t\t\t\tSource Category Events")
-    for item in results:
-        host_groups_list = [Id2tag(api_session, tenant_id, x) for x in item['hostGroupIds']]
-        host_groups = ','.join(host_groups_list)
+    with open(CSV_FILE, 'w') as csvFile:
+        writer = csv.writer(csvFile)
+        for item in results:
+            host_groups_list = [Id2tag(api_session, tenant_id, x) for x in item['hostGroupIds']]
+            host_groups = ','.join(host_groups_list)
+            host = [item['ipAddress'], host_groups, str(item['sourceCategoryEvents'][0])]
 
-        print(item['ipAddress'], '\t',
-              host_groups, '\t',
-              str(item['sourceCategoryEvents'][0]))
-        # print(item)
+            # Print a host
+            print('\t'.join(host))
+
+            # Save to a .csv file
+            writer.writerow(item)
+
+    print("\nSaved to " + CSV_FILE)
 
 
 
