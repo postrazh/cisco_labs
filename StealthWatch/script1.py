@@ -14,18 +14,6 @@ SMC_USER = "admin"
 SMC_PASSWORD = "WWTwwt1!"
 SMC_HOST = "192.168.128.109"
 
-def get(api_session, url, payload):
-    # Perform the POST request to login
-    response = api_session.request("POST", url, verify=False, data=payload)
-
-    status = response.status_code
-    content = response.text
-
-    print('query url=' + url)
-    print('  response=' + content)
-
-    return status, content
-
 def post(api_session, url, payload):
 
     request_headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
@@ -68,7 +56,7 @@ if __name__ == '__main__':
         "username": SMC_USER,
         "password": SMC_PASSWORD
     }
-    status, content = get(api_session, url, login_request_data)
+    status, content = post(api_session, url, login_request_data)
 
     if status != 200:
         print("An error has ocurred, while logging in, with the following code {}".format(status))
