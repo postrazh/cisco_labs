@@ -14,7 +14,19 @@ SMC_USER = "admin"
 SMC_PASSWORD = "WWTwwt1!"
 SMC_HOST = "192.168.128.109"
 
-def post(api_session, url, payload):
+def postUrlEncoded(api_session, url, payload):
+    # Perform the POST request to login
+    response = api_session.request("POST", url, verify=False, data=payload)
+
+    status = response.status_code
+    content = response.text
+
+    print('query url=' + url)
+    print('  response=' + content)
+
+    return status, content
+
+def postJson(api_session, url, payload):
 
     request_headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     response = api_session.request("POST", url, verify=False, data=json.dumps(payload), headers=request_headers)
@@ -33,8 +45,8 @@ def getTenantId(api_session):
     # Get the list of tenants (domains) from the SMC
     url = 'https://' + SMC_HOST + '/sw-reporting/v1/tenants/'
     response = api_session.request("GET", url, verify=False)
-    print('query url=' + url)
-    print('  response=' + str(response))
+    # print('query url=' + url)
+    # print('  response=' + str(response))
 
     # If successfully able to get list of tenants (domains)
     if (response.status_code == 200):
@@ -56,7 +68,7 @@ if __name__ == '__main__':
         "username": SMC_USER,
         "password": SMC_PASSWORD
     }
-    status, content = post(api_session, url, login_request_data)
+    status, content = postUrlEncoded(api_session, url, login_request_data)
 
     if status != 200:
         print("An error has ocurred, while logging in, with the following code {}".format(status))
@@ -101,7 +113,7 @@ if __name__ == '__main__':
             }
         ]
 
-        status, content = post(api_session, url, request_data)
+        status, content = postJson(api_session, url, request_data)
         if (status == 200):
             print("New tag (host group) successfully added")
         else:
