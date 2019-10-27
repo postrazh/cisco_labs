@@ -125,7 +125,7 @@ if __name__ == '__main__':
         print("Can not get a tenant Id.")
         exit(0)
 
-    # Get the list of tenants (domains) from the SMC
+    # Get the list of top alarming hosts from the SMC
     url = 'https://' + SMC_HOST + '/sw-reporting/v1/tenants/' + str(tenant_id) + "/internalHosts/alarms/topHosts"
     response = api_session.request("GET", url, verify=False)
 
