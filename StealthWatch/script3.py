@@ -147,7 +147,7 @@ if __name__ == '__main__':
             print('\t'.join(host))
 
             # Save to a .csv file
-            writer.writerow(item)
+            writer.writerow(host)
 
     print("\nSaved to " + CSV_FILE)
 
