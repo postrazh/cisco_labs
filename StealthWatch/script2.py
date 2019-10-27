@@ -15,6 +15,9 @@ SMC_USER = "admin"
 SMC_PASSWORD = "WWTwwt1!"
 SMC_HOST = "192.168.128.109"
 
+# Print verbose debugging messages
+IS_VERBOSE = False
+
 def postUrlEncoded(api_session, url, payload):
     # Perform the POST request to login
     response = api_session.request("POST", url, verify=False, data=payload)
@@ -22,8 +25,9 @@ def postUrlEncoded(api_session, url, payload):
     status = response.status_code
     content = response.text
 
-    print('query url=' + url)
-    print('  response=' + content)
+    if IS_VERBOSE:
+        print('query url=' + url)
+        print('  response=' + content)
 
     return status, content
 
@@ -37,8 +41,25 @@ def postJson(api_session, url, payload):
     status = response.status_code
     content = response.text
 
-    print('query url=' + url)
-    print('  response=' + content)
+    if IS_VERBOSE:
+        print('query url=' + url)
+        print('  response=' + content)
+
+    return status, content
+
+def putJson(api_session, url, payload):
+
+    request_headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
+    response = api_session.request("PUT", url, verify=False, data=json.dumps(payload), headers=request_headers)
+
+    json_data = json.loads(response.text)
+
+    status = response.status_code
+    content = response.text
+
+    if IS_VERBOSE:
+        print('query url=' + url)
+        print('  response=' + content)
 
     return status, content
 
@@ -46,12 +67,9 @@ def getTenantId(api_session):
     # Get the list of tenants (domains) from the SMC
     url = 'https://' + SMC_HOST + '/sw-reporting/v1/tenants/'
     response = api_session.request("GET", url, verify=False)
-    # print('query url=' + url)
-    # print('  response=' + str(response))
 
     # If successfully able to get list of tenants (domains)
     if (response.status_code == 200):
-        # Store the tenant (domain) ID as a variable to use later
         tenant_list = json.loads(response.content)["data"]
         tenant_id = tenant_list[0]["id"]
 
@@ -162,9 +180,28 @@ if __name__ == '__main__':
 
         status, content = postJson(api_session, url, request_data)
         if (status == 200):
-            print("New tag (host group) successfully added")
+            print("New policy successfully added")
         else:
-            print("An error has ocurred, while adding tags (host groups), with the following code {}".format(status))
+            print("An error has ocurred, while adding a policy, with the following code {}".format(status))
+            continue
+
+        json_data = json.loads(content)
+        policy_id = json_data['data']['customSecurityEvents']['id']
+        timestamp = json_data['data']['customSecurityEvents']['timestamp']
+
+        # Enable the policy just added
+        url = 'https://' + SMC_HOST + '/smc-configuration/rest/v1/tenants/' + \
+              str(tenant_id) + '/policy/customEvents/' + \
+              str(policy_id) + '/enable'
+        request_data = {
+            "timestamp": timestamp
+        }
+
+        status, content = putJson(api_session, url, request_data)
+        if (status == 200):
+            print("Enabled the policy successfully.")
+        else:
+            print("An error has ocurred, while enabling the policy, with the following code {}".format(status))
             continue
 
 

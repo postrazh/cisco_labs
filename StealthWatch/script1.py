@@ -14,6 +14,9 @@ SMC_USER = "admin"
 SMC_PASSWORD = "WWTwwt1!"
 SMC_HOST = "192.168.128.109"
 
+# Print verbose debugging messages
+IS_VERBOSE = False
+
 def postUrlEncoded(api_session, url, payload):
     # Perform the POST request to login
     response = api_session.request("POST", url, verify=False, data=payload)
@@ -21,8 +24,9 @@ def postUrlEncoded(api_session, url, payload):
     status = response.status_code
     content = response.text
 
-    print('query url=' + url)
-    print('  response=' + content)
+    if IS_VERBOSE:
+        print('query url=' + url)
+        print('  response=' + content)
 
     return status, content
 
@@ -36,8 +40,9 @@ def postJson(api_session, url, payload):
     status = response.status_code
     content = response.text
 
-    print('query url=' + url)
-    print('  response=' + content)
+    if IS_VERBOSE:
+        print('query url=' + url)
+        print('  response=' + content)
 
     return status, content
 
@@ -45,12 +50,9 @@ def getTenantId(api_session):
     # Get the list of tenants (domains) from the SMC
     url = 'https://' + SMC_HOST + '/sw-reporting/v1/tenants/'
     response = api_session.request("GET", url, verify=False)
-    # print('query url=' + url)
-    # print('  response=' + str(response))
 
     # If successfully able to get list of tenants (domains)
     if (response.status_code == 200):
-        # Store the tenant (domain) ID as a variable to use later
         tenant_list = json.loads(response.content)["data"]
         tenant_id = tenant_list[0]["id"]
 
