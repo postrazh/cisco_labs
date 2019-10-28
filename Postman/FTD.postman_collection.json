@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "f3d2e40b-7880-414a-95df-d5bd7667ae06",
+		"name": "FTD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"grant_type\": \"password\",\n\t\"username\": \"admin\",\n\t\"password\": \"WWTwwt1!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.128.124/api/fdm/latest/fdm/token",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"124"
+					],
+					"path": [
+						"api",
+						"fdm",
+						"latest",
+						"fdm",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Security zones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzIyOTk5NTEsInN1YiI6ImFkbWluIiwianRpIjoiMmM3M2IzNzUtZjljZS0xMWU5LWFjNmMtYWI0NTJlMmUxOTYzIiwibmJmIjoxNTcyMjk5OTUxLCJleHAiOjE1NzIzMDE3NTEsInJlZnJlc2hUb2tlbkV4cGlyZXNBdCI6MTU3MjMwMjM1MTU4NywidG9rZW5UeXBlIjoiSldUX0FjY2VzcyIsInVzZXJVdWlkIjoiZTUzNjg4ZDQtZjhiYi0xMWU5LTgwYjctNTMwNDg0NmViNGU2IiwidXNlclJvbGUiOiJST0xFX0FETUlOIiwib3JpZ2luIjoicGFzc3dvcmQiLCJ1c2VybmFtZSI6ImFkbWluIn0.kUWfxlb5pK9qP0WGkebFFZKUMkOPZSXc72REjlyJCYc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://192.168.128.124/api/fdm/v3/object/securityzones",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"124"
+					],
+					"path": [
+						"api",
+						"fdm",
+						"v3",
+						"object",
+						"securityzones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a Security Zone",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzIyOTk5NTEsInN1YiI6ImFkbWluIiwianRpIjoiMmM3M2IzNzUtZjljZS0xMWU5LWFjNmMtYWI0NTJlMmUxOTYzIiwibmJmIjoxNTcyMjk5OTUxLCJleHAiOjE1NzIzMDE3NTEsInJlZnJlc2hUb2tlbkV4cGlyZXNBdCI6MTU3MjMwMjM1MTU4NywidG9rZW5UeXBlIjoiSldUX0FjY2VzcyIsInVzZXJVdWlkIjoiZTUzNjg4ZDQtZjhiYi0xMWU5LTgwYjctNTMwNDg0NmViNGU2IiwidXNlclJvbGUiOiJST0xFX0FETUlOIiwib3JpZ2luIjoicGFzc3dvcmQiLCJ1c2VybmFtZSI6ImFkbWluIn0.kUWfxlb5pK9qP0WGkebFFZKUMkOPZSXc72REjlyJCYc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"securityzone\",\n    \"metadata\": {},\n    \"description\": null,\n    \"mode\": \"ROUTED\",\n    \"name\": \"test_zone3\",\n    \"version\": null,\n    \"interfaces\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.128.124/api/fdm/v3/object/securityzones",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"124"
+					],
+					"path": [
+						"api",
+						"fdm",
+						"v3",
+						"object",
+						"securityzones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deploy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzIyOTk5NTEsInN1YiI6ImFkbWluIiwianRpIjoiMmM3M2IzNzUtZjljZS0xMWU5LWFjNmMtYWI0NTJlMmUxOTYzIiwibmJmIjoxNTcyMjk5OTUxLCJleHAiOjE1NzIzMDE3NTEsInJlZnJlc2hUb2tlbkV4cGlyZXNBdCI6MTU3MjMwMjM1MTU4NywidG9rZW5UeXBlIjoiSldUX0FjY2VzcyIsInVzZXJVdWlkIjoiZTUzNjg4ZDQtZjhiYi0xMWU5LTgwYjctNTMwNDg0NmViNGU2IiwidXNlclJvbGUiOiJST0xFX0FETUlOIiwib3JpZ2luIjoicGFzc3dvcmQiLCJ1c2VybmFtZSI6ImFkbWluIn0.kUWfxlb5pK9qP0WGkebFFZKUMkOPZSXc72REjlyJCYc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"deploymentstatus\",\n    \"name\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.128.124/api/fdm/latest/operational/deploy",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"124"
+					],
+					"path": [
+						"api",
+						"fdm",
+						"latest",
+						"operational",
+						"deploy"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

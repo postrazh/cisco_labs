@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "8e9fec5d-2969-4c28-a37c-79d5c26220d4",
+		"name": "Stealthwatch test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "WWTwwt1!",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://192.168.128.109/token/v2/authenticate",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"109"
+					],
+					"path": [
+						"token",
+						"v2",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Domains (Tenants)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://192.168.128.109/sw-reporting/v1/tenants",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"109"
+					],
+					"path": [
+						"sw-reporting",
+						"v1",
+						"tenants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Host Group (Tag)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://192.168.128.109/smc-configuration/rest/v1/tenants/102/tags",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"109"
+					],
+					"path": [
+						"smc-configuration",
+						"rest",
+						"v1",
+						"tenants",
+						"102",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Host Group (Tag)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\"name\": \"G6\",\n\t\"location\": \"INSIDE\",\n\t\"ranges\": [\"10.10.10.10/24\"],\n\t\"parentId\": 1\n\t}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.128.109/smc-configuration/rest/v1/tenants/102/tags",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"109"
+					],
+					"path": [
+						"smc-configuration",
+						"rest",
+						"v1",
+						"tenants",
+						"102",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alarms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://192.168.128.109/sw-reporting/v1/tenants/102/internalHosts/alarms/topHosts",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"109"
+					],
+					"path": [
+						"sw-reporting",
+						"v1",
+						"tenants",
+						"102",
+						"internalHosts",
+						"alarms",
+						"topHosts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a policy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"block G7 TO G8\",\r\n    \"summary\": \"When an alarm is raised\",\r\n    \"subject\": {\r\n        \"tags\": {\r\n            \"excludes\": [],\r\n            \"includes\": [\r\n                \"88\"\r\n            ]\r\n        },\r\n        \"orientation\": \"either\"\r\n    },\r\n    \"peer\": {\r\n        \"tags\": {\r\n            \"excludes\": [],\r\n            \"includes\": [\r\n                \"90\"\r\n            ]\r\n        }\r\n    },\r\n    \"domainId\": \"102\"\r\n}"
+				},
+				"url": {
+					"raw": "https://192.168.128.109/smc-configuration/rest/v1/tenants/102/policy/customEvents",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"109"
+					],
+					"path": [
+						"smc-configuration",
+						"rest",
+						"v1",
+						"tenants",
+						"102",
+						"policy",
+						"customEvents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enabling the policy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.128.109/smc-configuration/rest/v1/tenants/102/policy/customEvents/1060/enable",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"109"
+					],
+					"path": [
+						"smc-configuration",
+						"rest",
+						"v1",
+						"tenants",
+						"102",
+						"policy",
+						"customEvents",
+						"1060",
+						"enable"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
