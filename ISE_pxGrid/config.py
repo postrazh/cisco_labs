@@ -2,7 +2,6 @@ import ssl
 
 class Config:
     def __init__(self):
-
         self.hostname = "ise24.acme.local"
         self.nodename = "xxx3"
         self.password = "ekMynr9Zu1rpqgqj"
