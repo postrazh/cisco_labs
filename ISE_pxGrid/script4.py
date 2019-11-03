@@ -11,7 +11,6 @@ import websockets
 from websockets import ConnectionClosed
 from io import StringIO
 
-
 class Config:
     def __init__(self):
         self.hostname = "ise24.acme.local"
@@ -50,7 +49,6 @@ class Config:
             context.load_verify_locations(cafile=self.isecert)
             return context
         return None
-
 
 class StompFrame:
     def __init__(self):
@@ -101,7 +99,6 @@ class StompFrame:
             frame.headers[name] = value
         frame.content = input.read()[:-1]
         return frame
-
 
 class WebSocketStomp:
     def __init__(self, ws_url, user, password, ssl_ctx):
@@ -183,15 +180,14 @@ class WebSocketStomp:
     def is_open(self):
         return self.ws.open
 
-
 class PxgridControl:
     def __init__(self, config):
         self.config = config
 
     def send_rest_request(self, url_suffix, payload):
         url = 'https://' + \
-              self.config.get_host_name() + \
-              ':8910/pxgrid/control/' + url_suffix
+            self.config.get_host_name() + \
+            ':8910/pxgrid/control/' + url_suffix
         if config.verbose:
             print("pxgrid url=" + url)
         json_string = json.dumps(payload)
@@ -240,11 +236,11 @@ class PxgridControl:
         payload = {'peerNodeName': peer_node_name}
         return self.send_rest_request('AccessSecret', payload)
 
-
 async def read_key():
-    line = await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
+    line = ''
+    while line != 'q':
+        line = await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
     return
-
 
 async def read_websocket(ws):
     try:
@@ -252,7 +248,6 @@ async def read_websocket(ws):
         print("message=" + json.dumps(message))
     except ConnectionClosed:
         print('Websocket connection closed')
-
 
 async def subscribe_loop(config, secret, ws_url, topic):
     ws = WebSocketStomp(ws_url, config.get_node_name(), secret, config.get_ssl_context())
@@ -265,7 +260,7 @@ async def subscribe_loop(config, secret, ws_url, topic):
         read_key_task
     }
 
-    print("press <enter> to disconnect...")
+    print("press <q> to disconnect...")
     while True:
         read_websocket_task = asyncio.create_task(read_websocket(ws))
         pending.add(read_websocket_task)
@@ -277,6 +272,7 @@ async def subscribe_loop(config, secret, ws_url, topic):
             await asyncio.sleep(3)
             await ws.disconnect()
             break
+
 
 if __name__ == '__main__':
     config = Config()
@@ -298,4 +294,7 @@ if __name__ == '__main__':
     secret = pxgrid.get_access_secret(pubsub_node_name)['secret']
     ws_url = pubsub_service['properties']['wsUrl']
 
-    asyncio.get_event_loop().run_until_complete(subscribe_loop(config, secret, ws_url, topic))
+    try:
+        asyncio.get_event_loop().run_until_complete(subscribe_loop(config, secret, ws_url, topic))
+    except KeyboardInterrupt:
+        print("Keyboard focus is lost. Please try again.")

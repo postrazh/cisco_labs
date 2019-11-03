@@ -237,7 +237,9 @@ class PxgridControl:
         return self.send_rest_request('AccessSecret', payload)
 
 async def read_key():
-    line = await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
+    line = ''
+    while line != 'q':
+        line = await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
     return
 
 async def read_websocket(ws):
@@ -258,7 +260,7 @@ async def subscribe_loop(config, secret, ws_url, topic):
         read_key_task
     }
 
-    print("press <enter> to disconnect...")
+    print("press <q> to disconnect...")
     while True:
         read_websocket_task = asyncio.create_task(read_websocket(ws))
         pending.add(read_websocket_task)
@@ -291,4 +293,7 @@ if __name__ == '__main__':
     secret = pxgrid.get_access_secret(pubsub_node_name)['secret']
     ws_url = pubsub_service['properties']['wsUrl']
 
-    asyncio.get_event_loop().run_until_complete(subscribe_loop(config, secret, ws_url, topic))
+    try:
+        asyncio.get_event_loop().run_until_complete(subscribe_loop(config, secret, ws_url, topic))
+    except KeyboardInterrupt:
+        print("Keyboard focus is lost. Please try again.")
