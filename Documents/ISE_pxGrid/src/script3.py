@@ -23,6 +23,8 @@ class Config:
         self.clientkeypassword = "Cisco123"
         self.isecert = "CertificateServicesRootCA-ise24_.cer"
 
+        self.verbose = False
+
     def get_host_name(self):
         return self.hostname
 
@@ -186,9 +188,12 @@ class PxgridControl:
         url = 'https://' + \
             self.config.get_host_name() + \
             ':8910/pxgrid/control/' + url_suffix
-        print("pxgrid url=" + url)
+        if config.verbose:
+            print("pxgrid url=" + url)
         json_string = json.dumps(payload)
-        print('  request=' + json_string)
+
+        if config.verbose:
+            print('  request=' + json_string)
         rest_request = urllib.request.Request(
             url=url, data=str.encode(json_string))
         rest_request.add_header('Content-Type', 'application/json')
@@ -204,11 +209,13 @@ class PxgridControl:
         try:
             rest_response = urllib.request.urlopen(rest_request, context=self.config.get_ssl_context())
         except Exception as e:
-            print(e)
+            if config.verbose:
+                print(e)
             return None
 
         response = rest_response.read().decode()
-        print('  response=' + response)
+        if config.verbose:
+            print('  response=' + response)
         return json.loads(response)
 
     def account_activate(self):
