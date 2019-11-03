@@ -272,10 +272,10 @@ if __name__ == '__main__':
         time.sleep(60)
 
     # lookup for session service
-    service_lookup_response = pxgrid.service_lookup('com.cisco.ise.config.anc')
+    service_lookup_response = pxgrid.service_lookup('com.cisco.ise.radius')
     service = service_lookup_response['services'][0]
     pubsub_service_name = service['properties']['wsPubsubService']
-    topic = service['properties']['statusTopic']
+    topic = service['properties']['failureTopic']
 
     # lookup for pubsub service
     service_lookup_response = pxgrid.service_lookup(pubsub_service_name)
