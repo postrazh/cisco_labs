@@ -27,7 +27,7 @@ async def subscribe_loop(config, secret, ws_url, topic):
     await ws.stomp_subscribe(topic)
     # setup keyboard callback
     stop_event = asyncio.Event()
-    # asyncio.get_event_loop().add_reader(sys.stdin, key_enter_callback, stop_event)
+    asyncio.get_event_loop().add_reader(sys.stdin, key_enter_callback, stop_event)
     print("press <enter> to disconnect...")
     while True:
         future = asyncio.Future()

@@ -13,11 +13,9 @@ def key_enter_callback(event):
     sys.stdin.readline()
     event.set()
 
-async def key_readline(loop, stop_event):
-    while True:
-        line = await loop.run_in_executor(None, sys.stdin.readline)
-        print('Got line:', line, end='')
-        stop_event.set()
+async def key_readline(event):
+    line = await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
+    event.set()
 
 async def future_read_message(ws, future):
     try:
@@ -33,22 +31,22 @@ async def subscribe_loop(config, secret, ws_url, topic):
     await ws.stomp_subscribe(topic)
     # setup keyboard callback
     stop_event = asyncio.Event()
-
-    read_feature = key_readline(stop_event)
-
-    # asyncio.get_event_loop().add_reader(sys.stdin, key_enter_callback, stop_event)
-    await asyncio.ensure_future(read_feature)
+    future_keyboard = key_readline(stop_event)
+    asyncio.ensure_future(future_keyboard)
 
     print("press <enter> to disconnect...")
     while True:
         future = asyncio.Future()
         future_read = future_read_message(ws, future)
-        await asyncio.wait([stop_event.wait(), future_read], return_when=FIRST_COMPLETED)
+
+        done, pending = await asyncio.wait([future_read, stop_event.wait()], return_when=FIRST_COMPLETED)
         if not stop_event.is_set():
             message = json.loads(future.result())
             print("message=" + json.dumps(message))
+
+            future_keyboard.close()
         else:
-            await ws.stomp_disconnect('123')
+            await ws.stomp_disconnect()
             # wait for receipt
             await asyncio.sleep(3)
             await ws.disconnect()

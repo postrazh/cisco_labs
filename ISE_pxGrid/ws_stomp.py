@@ -69,7 +69,7 @@ class WebSocketStomp:
                 print('STOMP ERROR content=' + stomp.get_content())
 
     async def stomp_disconnect(self, receipt=None):
-        print('STOMP DISCONNECT receipt=' + receipt)
+        print('STOMP DISCONNECTING...')
         frame = StompFrame()
         frame.set_command("DISCONNECT")
         if receipt is not None:
