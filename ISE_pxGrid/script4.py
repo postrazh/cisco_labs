@@ -11,6 +11,7 @@ import websockets
 from websockets import ConnectionClosed
 from io import StringIO
 
+
 class Config:
     def __init__(self):
         self.hostname = "ise24.acme.local"
@@ -22,6 +23,8 @@ class Config:
         self.clientkey = "win7vm.acme.local_192.168.128.114.key"
         self.clientkeypassword = "Cisco123"
         self.isecert = "CertificateServicesRootCA-ise24_.cer"
+
+        self.verbose = False
 
     def get_host_name(self):
         return self.hostname
@@ -47,6 +50,7 @@ class Config:
             context.load_verify_locations(cafile=self.isecert)
             return context
         return None
+
 
 class StompFrame:
     def __init__(self):
@@ -97,6 +101,7 @@ class StompFrame:
             frame.headers[name] = value
         frame.content = input.read()[:-1]
         return frame
+
 
 class WebSocketStomp:
     def __init__(self, ws_url, user, password, ssl_ctx):
@@ -178,17 +183,21 @@ class WebSocketStomp:
     def is_open(self):
         return self.ws.open
 
+
 class PxgridControl:
     def __init__(self, config):
         self.config = config
 
     def send_rest_request(self, url_suffix, payload):
         url = 'https://' + \
-            self.config.get_host_name() + \
-            ':8910/pxgrid/control/' + url_suffix
-        print("pxgrid url=" + url)
+              self.config.get_host_name() + \
+              ':8910/pxgrid/control/' + url_suffix
+        if config.verbose:
+            print("pxgrid url=" + url)
         json_string = json.dumps(payload)
-        print('  request=' + json_string)
+
+        if config.verbose:
+            print('  request=' + json_string)
         rest_request = urllib.request.Request(
             url=url, data=str.encode(json_string))
         rest_request.add_header('Content-Type', 'application/json')
@@ -204,11 +213,13 @@ class PxgridControl:
         try:
             rest_response = urllib.request.urlopen(rest_request, context=self.config.get_ssl_context())
         except Exception as e:
-            print(e)
+            if config.verbose:
+                print(e)
             return None
 
         response = rest_response.read().decode()
-        print('  response=' + response)
+        if config.verbose:
+            print('  response=' + response)
         return json.loads(response)
 
     def account_activate(self):
@@ -229,9 +240,11 @@ class PxgridControl:
         payload = {'peerNodeName': peer_node_name}
         return self.send_rest_request('AccessSecret', payload)
 
+
 async def read_key():
     line = await asyncio.get_event_loop().run_in_executor(None, sys.stdin.readline)
     return
+
 
 async def read_websocket(ws):
     try:
@@ -239,6 +252,7 @@ async def read_websocket(ws):
         print("message=" + json.dumps(message))
     except ConnectionClosed:
         print('Websocket connection closed')
+
 
 async def subscribe_loop(config, secret, ws_url, topic):
     ws = WebSocketStomp(ws_url, config.get_node_name(), secret, config.get_ssl_context())
