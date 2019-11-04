@@ -5,9 +5,10 @@ import json
 
 
 #Next lines turn off messages about missing SSL certificates
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-
+try:
+    requests.packages.urllib3.disable_warnings()
+except:
+    pass
 
 
 class Wrapper_API(object):
@@ -37,8 +38,8 @@ class Wrapper_API(object):
 		    resp = r.text
 		    if (status_code == 200):
 		        self.json_resp = json.loads(resp)
-		        print self.json_resp  
-		        return self.json_resp  
+		        print(resp)
+		        return self.json_resp
 		    else:
 		        r.raise_for_status()
 		        print("Error occurred in GET --> "+resp)
@@ -60,7 +61,7 @@ class Wrapper_API(object):
 		    resp = r.text
 		    if (status_code == 200):
 		        self.json_resp = json.loads(resp)
-		        print self.json_resp  
+		        print(resp)
 		        return self.json_resp  
 		    else:
 		        r.raise_for_status()
@@ -83,7 +84,7 @@ class Wrapper_API(object):
 		    resp = r.text
 		    if (status_code == 200):
 		        self.json_resp = json.loads(resp)
-		        print self.json_resp  
+		        print(resp)
 		        return self.json_resp  
 		    else:
 		        r.raise_for_status()
@@ -105,7 +106,7 @@ class Wrapper_API(object):
 		    resp = r.text
 		    if (status_code == 200):
 		        self.json_resp = json.loads(resp)
-		        print self.json_resp  
+		        print(resp)
 		        return self.json_resp  
 		    else:
 		        r.raise_for_status()
@@ -127,7 +128,7 @@ class Wrapper_API(object):
 		    resp = r.text
 		    if (status_code == 200):
 		        self.json_resp = json.loads(resp)
-		        print self.json_resp  
+		        print(resp)
 		        return self.json_resp  
 		    else:
 		        r.raise_for_status()
