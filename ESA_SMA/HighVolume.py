@@ -5,7 +5,7 @@ import requests, base64
 
 
 usrPass = "admin:WWTwwt1!"
-b64Val = base64.b64encode(usrPass)
+b64Val = base64.b64encode(usrPass.encode()).decode()
 
 server = "http://192.168.128.106:6080"
 r = None
@@ -14,7 +14,7 @@ headers = {'Content-Type': 'application/json', "Authorization": "Basic %s" % b64
 
 #The following example shows how to retrieve top five subjects of high volume mails for a specified duration
 
-api_path = "/api/v1.0/stats/mail_subject_stats?duration=2014-04-23T00:00-00:00/2014-10-21T00:00-00:00&max=5"  # param
+api_path = "/sma/api/v2.0/reporting/mail_subject_stats?duration=2014-04-23T00:00-00:00/2014-10-21T00:00-00:00&max=5"  # param
 url = server + api_path
 if (url[-1] == '/'):
     url = url[:-1]

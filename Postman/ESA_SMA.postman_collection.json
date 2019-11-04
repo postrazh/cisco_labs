@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "433cf402-34a0-4b68-a5bf-b5cc9a611304",
+		"name": "ESA_SMA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mail_incoming_traffic_summary",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2f9bf87c-8fe4-40d4-a1df-000b0cd56cb1",
+						"exec": [
+							"var dt = new Date();",
+							"var startDate = new Date(dt.getFullYear() - 1, dt.getMonth(), dt.getDate())",
+							"",
+							"var endDate =new Date(dt.getFullYear(), dt.getMonth(), dt.getDate())",
+							"",
+							"pm.environment.set('start_time', startDate.toISOString());",
+							"pm.environment.set('end_time', endDate.toISOString());",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b743128c-3094-4788-a63e-3240303cd0c6",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "WWTwwt1!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.128.106:6080/sma/api/v2.0/reporting/mail_incoming_traffic_summary/?device_type=esa&startDate={{start_time}}&endDate={{end_time}}",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"106"
+					],
+					"port": "6080",
+					"path": [
+						"sma",
+						"api",
+						"v2.0",
+						"reporting",
+						"mail_incoming_traffic_summary",
+						""
+					],
+					"query": [
+						{
+							"key": "device_type",
+							"value": "esa"
+						},
+						{
+							"key": "startDate",
+							"value": "{{start_time}}"
+						},
+						{
+							"key": "endDate",
+							"value": "{{end_time}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mail_incoming_network_detail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2f9bf87c-8fe4-40d4-a1df-000b0cd56cb1",
+						"exec": [
+							"var dt = new Date();",
+							"var startDate = new Date(dt.getFullYear() - 1, dt.getMonth(), dt.getDate())",
+							"",
+							"var endDate =new Date(dt.getFullYear(), dt.getMonth(), dt.getDate())",
+							"",
+							"pm.environment.set('start_time', startDate.toISOString());",
+							"pm.environment.set('end_time', endDate.toISOString());",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b743128c-3094-4788-a63e-3240303cd0c6",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "WWTwwt1!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.128.106:6080/sma/api/v2.0/reporting/mail_incoming_network_detail/?device_type=esa&startDate={{start_time}}&endDate={{end_time}}",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"106"
+					],
+					"port": "6080",
+					"path": [
+						"sma",
+						"api",
+						"v2.0",
+						"reporting",
+						"mail_incoming_network_detail",
+						""
+					],
+					"query": [
+						{
+							"key": "device_type",
+							"value": "esa"
+						},
+						{
+							"key": "startDate",
+							"value": "{{start_time}}"
+						},
+						{
+							"key": "endDate",
+							"value": "{{end_time}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mail_users_detail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2f9bf87c-8fe4-40d4-a1df-000b0cd56cb1",
+						"exec": [
+							"var dt = new Date();",
+							"var startDate = new Date(dt.getFullYear() - 1, dt.getMonth(), dt.getDate())",
+							"",
+							"var endDate =new Date(dt.getFullYear(), dt.getMonth(), dt.getDate())",
+							"",
+							"pm.environment.set('start_time', startDate.toISOString());",
+							"pm.environment.set('end_time', endDate.toISOString());",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b743128c-3094-4788-a63e-3240303cd0c6",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "WWTwwt1!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.128.106:6080/sma/api/v2.0/reporting/mail_users_detail/?device_type=esa&startDate={{start_time}}&endDate={{end_time}}",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"128",
+						"106"
+					],
+					"port": "6080",
+					"path": [
+						"sma",
+						"api",
+						"v2.0",
+						"reporting",
+						"mail_users_detail",
+						""
+					],
+					"query": [
+						{
+							"key": "device_type",
+							"value": "esa"
+						},
+						{
+							"key": "startDate",
+							"value": "{{start_time}}"
+						},
+						{
+							"key": "endDate",
+							"value": "{{end_time}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -5,7 +5,7 @@ import requests, base64
 
 
 usrPass = "admin:WWTwwt1!"
-b64Val = base64.b64encode(usrPass)
+b64Val = base64.b64encode(usrPass.encode()).decode()
 
 server = "http://192.168.128.106:6080"
 r = None
@@ -14,7 +14,7 @@ headers = {'Content-Type': 'application/json', "Authorization": "Basic %s" % b64
 
 #The following example shows how to retrieve aggregate Incoming Mail Summary report for the last one day
 
-api_path = "/api/v1.0/stats/mail_incoming_traffic_summary?1d"  # param
+api_path = "/sma/api/v2.0/reporting/mail_incoming_traffic_summary"  # param
 url = server + api_path
 if (url[-1] == '/'):
     url = url[:-1]

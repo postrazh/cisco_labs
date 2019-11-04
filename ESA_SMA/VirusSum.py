@@ -5,7 +5,7 @@ import requests, base64
 
 
 usrPass = "admin:WWTwwt1!"
-b64Val = base64.b64encode(usrPass)
+b64Val = base64.b64encode(usrPass.encode()).decode()
 
 server = "http://192.168.128.106:6080"
 r = None
@@ -15,7 +15,7 @@ headers = {'Content-Type': 'application/json', "Authorization": "Basic %s" % b64
 
 #allows you to retrieve the description of the counter detected_virus in the Incoming Mail Summary report
 
-api_path = "/api/v1.0/stats/mail_incoming_traffic_summary/detected_virus/help"  # param
+api_path = "/sma/api/v2.0/reporting/mail_incoming_traffic_summary/detected_virus/help"  # param
 url = server + api_path
 if (url[-1] == '/'):
     url = url[:-1]

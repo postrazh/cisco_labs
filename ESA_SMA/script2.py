@@ -4,7 +4,7 @@ import requests
 import base64
 
 server = "http://192.168.128.106:6080"
-api_path = "/sma/api/v2.0/reporting/mail_incoming_traffic_summary/"
+api_path = "/sma/api/v2.0/reporting/mail_users_detail/"
 usrPass = "admin:WWTwwt1!"
 
 b64Val = base64.b64encode(usrPass.encode()).decode()

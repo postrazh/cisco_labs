@@ -10,5 +10,5 @@ java -cp RadiusSimulator.jar -DUSERNAME=user1 -DPASSWORD=Cisco123 -DCALLING_STAT
 
 ---------------------------------------------------------------------------
 
-java -cp RadiusSimulator.jar -DUSERNAME=user2 -DPASSWORD=Cisco123 -DCALLING_STATION_ID=11:11:11:11:11:18 -DAUDIT_SESSION_ID=1001 -DFRAMED_IP_ADDRESS=192.168.128.25 -DFRAMED_IP_MASK=255.255.255.0 -DRADIUS_SECRET=Secret RadiusAuthentication 192.168.128.115
+java -cp RadiusSimulator.jar -DUSERNAME=user1 -DPASSWORD=Cisco123 -DCALLING_STATION_ID=11:11:11:11:11:15 -DAUDIT_SESSION_ID=1001 -DFRAMED_IP_ADDRESS=192.168.1.63 -DFRAMED_IP_MASK=255.255.255.0 -DRADIUS_SECRET=Secret RadiusAuthentication 192.168.128.115
 

@@ -16,12 +16,12 @@ class Wrapper_API(object):
 	Initialisation for the class dealing with all calls to the FMC API
 	"""
 	def __init__(self, server, usrPass):
-		b64Val = base64.b64encode(usrPass)
+		b64Val = base64.b64encode(usrPass.encode()).decode()
 
 		self.server = server
 		self.usrPass = b64Val
 		self.headers = {'Content-Type': 'application/json', "Authorization": "Basic %s" % self.usrPass}
-		self.api_base_path = "/api/v1.0/stats"
+		self.api_base_path = "/sma/api/v2.0/reporting"
 		self.json_resp = {}
 		
 
