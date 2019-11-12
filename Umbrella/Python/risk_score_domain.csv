@@ -1,0 +1,3 @@
+Domain,Risk Score,Geo Popularity Score,Keyword Score,Lexical,Popularity 1 Day,Popularity 30 Day,Popularity 7 Day,Popularity 90 Day,TLD Rank Score,Umbrella Block Status
+cisco.com,5,2,7,74,100,100,100,100,0,0
+internetbadguys.com,100,26,4,82,65,65,65,67,0,100
