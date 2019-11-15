@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "74542876-6cd8-403f-aff9-4ec8b9b8135e",
+		"name": "AMP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Event Types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/event_types",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"event_types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query and Filter Events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/events?limit=2&start_date=2015-10-01T00%3A00%3A00%2B00%3A00&event_type=1090519054",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"events"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "start_date",
+							"value": "2015-10-01T00%3A00%3A00%2B00%3A00"
+						},
+						{
+							"key": "event_type",
+							"value": "1090519054"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Policies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/policies?product[]=windows&limit=10",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"policies"
+					],
+					"query": [
+						{
+							"key": "product[]",
+							"value": "windows"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Details of a particular policy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/policies/a4f604c6-44e8-4c1d-a146-a34a16d82028",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"policies",
+						"a4f604c6-44e8-4c1d-a146-a34a16d82028"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of computers filtered by hostname",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/computers?hostname[]=threat",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"computers"
+					],
+					"query": [
+						{
+							"key": "hostname[]",
+							"value": "threat"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lst of all activities associated with a particular computer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/computers/{{connector_guid}}/trajectory?limit=3",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"computers",
+						"{{connector_guid}}",
+						"trajectory"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of vulnerabilities observed on a specific computer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/computers/{{connector_guid}}/vulnerabilities?limit=3",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"computers",
+						"{{connector_guid}}",
+						"vulnerabilities"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "aa54b2a8-a21a-445d-8fe1-543c141fca6d",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "0ed3f7a4afef01292b93",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "47a75356-9da5-4246-8df4-7a3bd4a84759",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ff1f5916-2967-4f71-8c19-6ef07af7f388",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

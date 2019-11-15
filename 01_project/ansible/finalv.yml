@@ -1,0 +1,73 @@
+- name: run shells
+  hosts: all
+  gather_facts: False
+  vars_prompt:
+  - name: "question"
+    prompt: "Would like to configure a manager ?"
+    private: no
+  tasks: 
+
+  
+    - name: 
+      raw: show managers
+      register: output
+
+    - name: 
+      debug:
+       msg: "{{output.stdout}}"
+      when: output.stdout.find('192')!=-1
+    - name:  
+      debug:
+        msg: No Manger is configured
+      when: output.stdout.find('192')==-1
+
+    - name: launch centos
+      shell: pkill ansible
+      delegate_to: 127.0.0.1
+      when: question == "no" 
+
+
+
+- name: 
+  hosts: all
+  gather_facts: False
+  vars_prompt:
+    - name: "command"
+      prompt: "Enter command(add/delete)"
+      private: no        
+  
+  tasks:
+      - name: 
+        raw: configure manager delete
+        register: dd
+        when: command =="delete"
+      - name: 
+        debug:
+          msg: "{{dd.stdout}}"
+        when: command =="delete"
+      - name: launch centos
+        shell: pkill ansible
+        delegate_to: 127.0.0.1
+        when: command == "delete" or command !="add"
+
+- name: 
+  hosts: all
+  gather_facts: False
+  vars_prompt:
+    - name: "ip"
+      prompt: "Enter ip"
+      private: no
+    - name: "key"
+      prompt: "Enter secret Key"
+      private: no
+
+  tasks:
+      - name: 
+        raw: "configure manager add {{ip}} {{key}}"
+        register: dd
+      - name:
+        debug:
+          msg: "{{dd.stdout}}"
+      - name: 
+        debug:
+
