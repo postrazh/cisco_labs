@@ -69,7 +69,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.amp.cisco.com/v1/policies?product[]=windows&limit=10",
+					"raw": "https://api.amp.cisco.com/v1/policies?",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -84,11 +84,13 @@
 					"query": [
 						{
 							"key": "product[]",
-							"value": "windows"
+							"value": "windows",
+							"disabled": true
 						},
 						{
 							"key": "limit",
-							"value": "10"
+							"value": "10",
+							"disabled": true
 						}
 					]
 				}
@@ -124,7 +126,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.amp.cisco.com/v1/computers?hostname[]=threat",
+					"raw": "https://api.amp.cisco.com/v1/computers?",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -139,7 +141,8 @@
 					"query": [
 						{
 							"key": "hostname[]",
-							"value": "threat"
+							"value": "",
+							"disabled": true
 						}
 					]
 				}
@@ -152,7 +155,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.amp.cisco.com/v1/computers/{{connector_guid}}/trajectory?limit=3",
+					"raw": "https://api.amp.cisco.com/v1/computers/{{connector_guid}}/trajectory?",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -169,7 +172,8 @@
 					"query": [
 						{
 							"key": "limit",
-							"value": "3"
+							"value": "3",
+							"disabled": true
 						}
 					]
 				}
@@ -182,7 +186,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.amp.cisco.com/v1/computers/{{connector_guid}}/vulnerabilities?limit=3",
+					"raw": "https://api.amp.cisco.com/v1/computers/{{connector_guid}}/vulnerabilities?",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -199,8 +203,32 @@
 					"query": [
 						{
 							"key": "limit",
-							"value": "3"
+							"value": "3",
+							"disabled": true
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "policy xml",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.amp.cisco.com/v1/policies/9c842c82-b910-425b-9959-f73657bb4d61.xml",
+					"protocol": "https",
+					"host": [
+						"api",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"v1",
+						"policies",
+						"9c842c82-b910-425b-9959-f73657bb4d61.xml"
 					]
 				}
 			},
