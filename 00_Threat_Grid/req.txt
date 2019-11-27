@@ -1,0 +1,13 @@
+TG
+https://panacea.threatgrid.com/login
+u: saui_student
+p: S@ui_1234
+
+
+Section 9 - Lab 1 (Cisco Threat Grid - Cloud) 
+-------------------
+45) TG - Authenticate to Cisco Threat Grid API
+46) TG - Search the Submissions Endpoint with the Given SHA Value
+47) TG - Query the Indication of Compromise Feed for a Malicious Domain
+48) TG - Request with the API for Sample Feeds
+49) TG - Dispose of a Malware Threat
