@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "0008bb87-284c-4c5a-bc93-90b4453b87f4",
+		"name": "ThreatResponse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "OAuth2 Authentication Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "AhbBtIFk36de9YoSzixig6BR3Tb2FNC_tnHf-jTEb0jiL09SohdjiQ",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client-c1092fe8-4952-4e3a-92b5-64a0fb54ffb5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visibility.amp.cisco.com/iroh/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"visibility",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"iroh",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Disposition of a Malware Threat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL3VzZXJcL2VtYWlsIjoicG1hdHVzaWFAY2lzY28uY29tIiwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC91c2VyXC9zY29wZXMiOlsicHJpdmF0ZS1pbnRlbCIsInByb2ZpbGUiLCJpbnNwZWN0IiwiaW50ZWdyYXRpb246cmVhZCIsInVzZXJzIiwiY2FzZWJvb2siLCJzc2U6cmVhZCIsImVucmljaCIsIm9hdXRoIiwiY29sbGVjdCIsInJlc3BvbnNlIiwidWktc2V0dGluZ3MiLCJnbG9iYWwtaW50ZWw6cmVhZCIsIm9pZGMiXSwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC91c2VyXC9uaWNrIjoiU0FVSSBDb3Vyc2UiLCJlbWFpbCI6InBtYXR1c2lhQGNpc2NvLmNvbSIsInN1YiI6InNhdWlfc3R1ZGVudCIsImlzcyI6IklST0ggQXV0aCIsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvc2NvcGVzIjpbInByaXZhdGUtaW50ZWwiLCJlbnJpY2g6cmVhZCIsImNhc2Vib29rIiwiaW5zcGVjdDpyZWFkIiwicmVzcG9uc2UiLCJnbG9iYWwtaW50ZWw6cmVhZCJdLCJleHAiOjE1NzQ5NzI3NTUsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvb2F1dGhcL3VzZXJcL2lkIjoic2F1aV9zdHVkZW50IiwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC9vcmdcL2lkIjoidGhyZWF0Z3JpZDoyOTQ3MDAiLCJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL29hdXRoXC9ncmFudCI6ImNsaWVudC1jcmVkcyIsImp0aSI6InRva2VuLTJhMjAyNjMwLWEwOTMtNDU0OC1iZTExLTBlYmFhOWQ2Mzk1ZSIsIm5iZiI6MTU3NDk3MjA5NSwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC9vYXV0aFwvc2NvcGVzIjpbInByaXZhdGUtaW50ZWwiLCJlbnJpY2g6cmVhZCIsImNhc2Vib29rIiwiaW5zcGVjdDpyZWFkIiwicmVzcG9uc2UiLCJnbG9iYWwtaW50ZWw6cmVhZCJdLCJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL3VzZXJcL25hbWUiOiJTQVVJIENvdXJzZSIsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvdXNlclwvaWQiOiJzYXVpX3N0dWRlbnQiLCJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL29hdXRoXC9jbGllbnRcL2lkIjoiY2xpZW50LWMxMDkyZmU4LTQ5NTItNGUzYS05MmI1LTY0YTBmYjU0ZmZiNSIsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvdmVyc2lvbiI6InYxLjM1LjAtZGY4MTRlN2I2MjgzMGRkZDU3NmQiLCJpYXQiOjE1NzQ5NzIxNTUsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvb2F1dGhcL2tpbmQiOiJhY2Nlc3MtdG9rZW4ifQ.bcznbR6p2MNpNdORjhfywsQi6Df_XzQGLRgUKP3IFvZxrWBmxq9PRJ6KiafJGxoh3hbaaWFliB9B7PT0NxB1x_lhPSWnwMVfi9QgcWRL_xvmo9k9UrU1e_l-mKlG0HydldemTc-i_w7FMdN5rf9BHOY64qxOUM5X6xR3rcdHEUdab_o7Qxd9hKER7TASc0OMXULHs_4s3tDRHjnM7a1rJENaLNLjv5fPrFsT8ogXEXhjyQ1IM18mdiSbxCi5BFhhI_NLWmhfa1ohUR6a8giq7Uc--Q0LoXAMAFz2SMsSxvguwukj4thacTj3NBtoMGUU9ikLeDzdM6m8aTcw324hKA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"value\": \"3b0c62cb455a2f925b1cf3f6561c51d4deb91b79256e6f8a4ab8fb32e45d73c9\",\n        \"type\": \"sha256\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visibility.amp.cisco.com/iroh/iroh-enrich/deliberate/observables",
+					"protocol": "https",
+					"host": [
+						"visibility",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"iroh",
+						"iroh-enrich",
+						"deliberate",
+						"observables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IOC Feed for a Malicious Domain",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL3VzZXJcL2VtYWlsIjoicG1hdHVzaWFAY2lzY28uY29tIiwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC91c2VyXC9zY29wZXMiOlsicHJpdmF0ZS1pbnRlbCIsInByb2ZpbGUiLCJpbnNwZWN0IiwiaW50ZWdyYXRpb246cmVhZCIsInVzZXJzIiwiY2FzZWJvb2siLCJzc2U6cmVhZCIsImVucmljaCIsIm9hdXRoIiwiY29sbGVjdCIsInJlc3BvbnNlIiwidWktc2V0dGluZ3MiLCJnbG9iYWwtaW50ZWw6cmVhZCIsIm9pZGMiXSwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC91c2VyXC9uaWNrIjoiU0FVSSBDb3Vyc2UiLCJlbWFpbCI6InBtYXR1c2lhQGNpc2NvLmNvbSIsInN1YiI6InNhdWlfc3R1ZGVudCIsImlzcyI6IklST0ggQXV0aCIsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvc2NvcGVzIjpbInByaXZhdGUtaW50ZWwiLCJlbnJpY2g6cmVhZCIsImNhc2Vib29rIiwiaW5zcGVjdDpyZWFkIiwicmVzcG9uc2UiLCJnbG9iYWwtaW50ZWw6cmVhZCJdLCJleHAiOjE1NzQ5NzY5ODEsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvb2F1dGhcL3VzZXJcL2lkIjoic2F1aV9zdHVkZW50IiwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC9vcmdcL2lkIjoidGhyZWF0Z3JpZDoyOTQ3MDAiLCJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL29hdXRoXC9ncmFudCI6ImNsaWVudC1jcmVkcyIsImp0aSI6InRva2VuLTFiNDk4ODRlLWQzNzEtNDZhOS04MTRmLTRjOWQxODU1MjBmNyIsIm5iZiI6MTU3NDk3NjMyMSwiaHR0cHM6XC9cL3NjaGVtYXMuY2lzY28uY29tXC9pcm9oXC9pZGVudGl0eVwvY2xhaW1zXC9vYXV0aFwvc2NvcGVzIjpbInByaXZhdGUtaW50ZWwiLCJlbnJpY2g6cmVhZCIsImNhc2Vib29rIiwiaW5zcGVjdDpyZWFkIiwicmVzcG9uc2UiLCJnbG9iYWwtaW50ZWw6cmVhZCJdLCJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL3VzZXJcL25hbWUiOiJTQVVJIENvdXJzZSIsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvdXNlclwvaWQiOiJzYXVpX3N0dWRlbnQiLCJodHRwczpcL1wvc2NoZW1hcy5jaXNjby5jb21cL2lyb2hcL2lkZW50aXR5XC9jbGFpbXNcL29hdXRoXC9jbGllbnRcL2lkIjoiY2xpZW50LWMxMDkyZmU4LTQ5NTItNGUzYS05MmI1LTY0YTBmYjU0ZmZiNSIsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvdmVyc2lvbiI6InYxLjM1LjAtZGY4MTRlN2I2MjgzMGRkZDU3NmQiLCJpYXQiOjE1NzQ5NzYzODEsImh0dHBzOlwvXC9zY2hlbWFzLmNpc2NvLmNvbVwvaXJvaFwvaWRlbnRpdHlcL2NsYWltc1wvb2F1dGhcL2tpbmQiOiJhY2Nlc3MtdG9rZW4ifQ.ZMmXcYLFUOBbN8Ixxdc_46aWPhKbKwfw-t5oOhU6hwbLnHhL79tOja5KOpQl1rbf1Wh-nAM9cyz30H_aSlT77tIwbu-gUkH4peAZDWFMqf8fSN3ItLI9nBfl3zACBLjOBHdc3bIIhhTvrzr24maF9AZrCxASLePF8Bff7-X5ypPxGyAD8NS1Siuwj7w8DSk09enCqUjL64o7V_LHHE3PJC1jqphGwdv8VfRqv8UwgJSkEPr1jeH9AvZQEAg3tUaVykuVFd1ENAvIeiqHDupJzgw7m8pxHksiUxWdAtREmbLxm98m1s22C3waAYcF3BM0NgnHLAhUS0eeV6JJ-mFeUg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"type\": \"domain\",\n        \"value\": \"ns1.cloud-name.ru\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://visibility.amp.cisco.com/iroh/iroh-enrich/observe/observables",
+					"protocol": "https",
+					"host": [
+						"visibility",
+						"amp",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"iroh",
+						"iroh-enrich",
+						"observe",
+						"observables"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

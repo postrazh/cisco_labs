@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "711e0cf1-5713-4c19-a102-5f6999f80ec0",
+		"name": "ThreatGrid",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search Submission",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://panacea.threatgrid.com/api/v2/search/submissions?q=325cbcc44ed8989a49c1dd72992ef71c2245d1854a404724ad9a18d2cd8c4bb1&api_key=jq5s3o89o82lgtslcg23bhfred",
+					"protocol": "https",
+					"host": [
+						"panacea",
+						"threatgrid",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"search",
+						"submissions"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "325cbcc44ed8989a49c1dd72992ef71c2245d1854a404724ad9a18d2cd8c4bb1"
+						},
+						{
+							"key": "api_key",
+							"value": "jq5s3o89o82lgtslcg23bhfred"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request a Sample Feed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sample",
+							"type": "file",
+							"src": "/D:/GitHub/Project1/Release/Project3.exe"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://panacea.threatgrid.com/api/v2/samples?api_key=jq5s3o89o82lgtslcg23bhfred",
+					"protocol": "https",
+					"host": [
+						"panacea",
+						"threatgrid",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"samples"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "jq5s3o89o82lgtslcg23bhfred"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
