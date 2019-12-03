@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "65b11daa-4cce-47c4-b174-f45a1af706b6",
+		"name": "StealthWatch Cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1_Gather traffic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/snapshots/session-data/?ip=192.168.128.228",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"snapshots",
+						"session-data",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "ip",
+							"value": "192.168.128.228"
+						},
+						{
+							"key": "connected_ip",
+							"value": "23.236.62.147",
+							"disabled": true
+						},
+						{
+							"key": "connected_port",
+							"value": "80",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2_Audit Report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/audit/log/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"audit",
+						"log",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_blacklist : List Domains",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/blacklist/domains/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"blacklist",
+						"domains",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_Create a blacklisted domain.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "category",
+							"value": "domain",
+							"type": "text"
+						},
+						{
+							"key": "identifier",
+							"value": "stackoverflow2.com",
+							"type": "text"
+						},
+						{
+							"key": "list_on",
+							"value": "blacklist",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/blacklist/domains/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"blacklist",
+						"domains",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_Get Observations",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "ApiKey aeljack@yahoo.com:68b95c0ff53947aca0203c2807842e7a",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/observations/all/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"observations",
+						"all",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Roles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/roles/role/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"roles",
+						"role",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "ApiKey aeljack@yahoo.com:68b95c0ff53947aca0203c2807842e7a",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "16b06623-dd57-4ecf-a045-74b67965a8bd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "1ffd1407-1f7c-46f1-8ac8-eb87eacdecdc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
