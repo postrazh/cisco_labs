@@ -1,0 +1,7 @@
+21) Stealth Watch Cloud - Gather Security Observation from Reporting APIs
+22) Stealth Watch Cloud - Build Report from the Data (report)Alerts
+
+23) Stealth Watch Cloud - Use Enforcement API to Make a Change, :Change the alert priority
+
+24) Stealth Watch Cloud - Update the Report with New Data,
+- nmap which generate the un usual traffic, and show the report of the StealthWatch Cloud again.
