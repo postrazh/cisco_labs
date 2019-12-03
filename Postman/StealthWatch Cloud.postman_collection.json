@@ -6,7 +6,151 @@
 	},
 	"item": [
 		{
-			"name": "Get Observations",
+			"name": "1_Gather traffic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/snapshots/session-data/?ip=192.168.128.228",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"snapshots",
+						"session-data",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "20",
+							"disabled": true
+						},
+						{
+							"key": "ip",
+							"value": "192.168.128.228"
+						},
+						{
+							"key": "connected_ip",
+							"value": "23.236.62.147",
+							"disabled": true
+						},
+						{
+							"key": "connected_port",
+							"value": "80",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2_Audit Report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/audit/log/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"audit",
+						"log",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_blacklist : List Domains",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/blacklist/domains/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"blacklist",
+						"domains",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_Create a blacklisted domain.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "category",
+							"value": "domain",
+							"type": "text"
+						},
+						{
+							"key": "identifier",
+							"value": "stackoverflow2.com",
+							"type": "text"
+						},
+						{
+							"key": "list_on",
+							"value": "blacklist",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/blacklist/domains/",
+					"protocol": "https",
+					"host": [
+						"cisco-pmatusia",
+						"obsrvbl",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"blacklist",
+						"domains",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_Get Observations",
 			"request": {
 				"auth": {
 					"type": "apikey",
@@ -67,54 +211,6 @@
 						"v3",
 						"roles",
 						"role",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "blacklist : List Domains",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/blacklist/domains/",
-					"protocol": "https",
-					"host": [
-						"cisco-pmatusia",
-						"obsrvbl",
-						"com"
-					],
-					"path": [
-						"api",
-						"v3",
-						"blacklist",
-						"domains",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create a blacklisted domain.",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "https://cisco-pmatusia.obsrvbl.com/api/v3/blacklist/domains/",
-					"protocol": "https",
-					"host": [
-						"cisco-pmatusia",
-						"obsrvbl",
-						"com"
-					],
-					"path": [
-						"api",
-						"v3",
-						"blacklist",
-						"domains",
 						""
 					]
 				}
