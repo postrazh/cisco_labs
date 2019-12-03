@@ -1,5 +1,0 @@
-https://cisco-pmatusia.obsrvbl.com/accounts/settings/user/
-
-HTTP requests using the API should have the following value for the Authorization header:
-
-ApiKey aeljack@yahoo.com:b60ef85f204a4e5f93f9acb8bd8733cb
