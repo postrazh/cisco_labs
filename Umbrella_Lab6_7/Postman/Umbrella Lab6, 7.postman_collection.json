@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "13db2c74-92a5-4790-86aa-643975999d58",
+		"name": "Umbrella Lab6, 7",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Most Recent Requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reports.api.umbrella.com/v1/organizations/2353515/destinations/update.googleapis.com/activity",
+					"protocol": "https",
+					"host": [
+						"reports",
+						"api",
+						"umbrella",
+						"com"
+					],
+					"path": [
+						"v1",
+						"organizations",
+						"2353515",
+						"destinations",
+						"update.googleapis.com",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top Identities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reports.api.umbrella.com/v1/organizations/2353515/destinations/update.googleapis.com/identities",
+					"protocol": "https",
+					"host": [
+						"reports",
+						"api",
+						"umbrella",
+						"com"
+					],
+					"path": [
+						"v1",
+						"organizations",
+						"2353515",
+						"destinations",
+						"update.googleapis.com",
+						"identities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Security Activity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reports.api.umbrella.com/v1/organizations/2353515/security-activity?start=0",
+					"protocol": "https",
+					"host": [
+						"reports",
+						"api",
+						"umbrella",
+						"com"
+					],
+					"path": [
+						"v1",
+						"organizations",
+						"2353515",
+						"security-activity"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "34_Top Categories(Allowed)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU4Mjg0NTksImlhdCI6MTU3NTgyNDg1OSwiaXNzIjoidW1icmVsbGEtYXV0aHovYXV0aHN2YyIsIm5iZiI6MTU3NTgyNDg1OSwic3ViIjoib3JnLzI2NDkwMjgvdXNlci8xMDk3MzEwNCIsInNjb3BlIjoicm9sZTpyb290LWFkbWluIiwiYXV0aHpfZG9uZSI6ZmFsc2V9.SYMCHTNweKn4jJCRvAycxjXNNBKMcGoHAZJw9gSf1M5UOWxJ-QjJBs22fSPmE5Qg0Q-XmT26qKeNQamfiMM00QZcGjRmMQG3nDTK9Aokg32HH1I1aI0fOalKc1XO-__NSy30Q-krkpruKrXSQHdBzMGMthFwg_Yp-otX1hoSK1knwq2-4ETNr3pSRNJ7Jx6Bq2BMuTudwtXevrwiXGZQTU1eRCFWBztHL-z7VrL40XIvN-6yosQBh2zTWS_DWM2aokApj1P7_8ffGjncWX6T8B0izEQ5dxxscpQ-8Da8BywILDZRnmbRKObryyhuj49fCq7__m5X3hDz2zNyEF6bAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reports.api.umbrella.com/v2/organizations/2649028/top-categories?verdict=allowed",
+					"protocol": "https",
+					"host": [
+						"reports",
+						"api",
+						"umbrella",
+						"com"
+					],
+					"path": [
+						"v2",
+						"organizations",
+						"2649028",
+						"top-categories"
+					],
+					"query": [
+						{
+							"key": "verdict",
+							"value": "allowed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "34_Top Categories(Blocked)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzU4Mjg0NTksImlhdCI6MTU3NTgyNDg1OSwiaXNzIjoidW1icmVsbGEtYXV0aHovYXV0aHN2YyIsIm5iZiI6MTU3NTgyNDg1OSwic3ViIjoib3JnLzI2NDkwMjgvdXNlci8xMDk3MzEwNCIsInNjb3BlIjoicm9sZTpyb290LWFkbWluIiwiYXV0aHpfZG9uZSI6ZmFsc2V9.SYMCHTNweKn4jJCRvAycxjXNNBKMcGoHAZJw9gSf1M5UOWxJ-QjJBs22fSPmE5Qg0Q-XmT26qKeNQamfiMM00QZcGjRmMQG3nDTK9Aokg32HH1I1aI0fOalKc1XO-__NSy30Q-krkpruKrXSQHdBzMGMthFwg_Yp-otX1hoSK1knwq2-4ETNr3pSRNJ7Jx6Bq2BMuTudwtXevrwiXGZQTU1eRCFWBztHL-z7VrL40XIvN-6yosQBh2zTWS_DWM2aokApj1P7_8ffGjncWX6T8B0izEQ5dxxscpQ-8Da8BywILDZRnmbRKObryyhuj49fCq7__m5X3hDz2zNyEF6bAA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reports.api.umbrella.com/v2/organizations/2649028/top-categories?verdict=blocked",
+					"protocol": "https",
+					"host": [
+						"reports",
+						"api",
+						"umbrella",
+						"com"
+					],
+					"path": [
+						"v2",
+						"organizations",
+						"2649028",
+						"top-categories"
+					],
+					"query": [
+						{
+							"key": "verdict",
+							"value": "blocked"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "34_Get Access Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "c295ebf669f4471cbdf0850819c32a40",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "32ac3fabef474e01b1af50610ce4353a",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://management.api.umbrella.com/auth/v2/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"management",
+						"api",
+						"umbrella",
+						"com"
+					],
+					"path": [
+						"auth",
+						"v2",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "4833be4f51ff4b398ebcbe144b9239c8",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "663a91da0a2545e6ba17acf83ef01b06",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c14d17db-8e73-406c-8964-56397fd38bc3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "367728cb-a3c9-4ad6-8dac-f4094b1ac974",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
