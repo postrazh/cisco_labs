@@ -1,0 +1,7190 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "v1",
+		"title": "Silverbyte Guest Portal API",
+		"description": "Guest Portal API"
+	},
+	"host": "optima.wattsec.com",
+	"basePath": "/Silverbyte.GuestPortal.DmzApplication",
+	"schemes": [
+		"https"
+	],
+	"paths": {
+		"/api/DmzAccount/ForgotPassword": {
+			
+		},
+		"/api/DmzCurrency/GetCurrencyExchange": {
+			
+		},
+		"/api/DmzGuest/LoginGuest": {
+			
+		},
+		"/api/DmzGuest/RegisterGuestWithDoorProvider": {
+			
+		},
+		"/api/DmzGuest/RegisterDeviceWithGuest": {
+			
+		},
+		"/api/DmzGuest/ExternalUpdateGuest": {
+			"put": {
+				"tags": [
+					"DmzGuest"
+				],
+				"summary": "Updates guest details in the PMS (OTA)\r\nFields required for guest update:\r\n- UniqueID.ID - GuestID\r\nFields available to update:\r\n- ProfileModify.Customer.Address.AddressLine\r\n- ProfileModify.Customer.Address.CityName\r\n- ProfileModify.Customer.Address.CountryName - ISO 3 letter code\r\n- ProfileModify.Customer.Address.PostalCode\r\n- ProfileModify.Customer.Address.StateProv\r\n- ProfileModify.Customer.BirthDate\r\n- ProfileModify.Customer.Document.DocID\r\n- ProfileModify.Customer.Document.DocType - needs to be 1 (Passport) 2 (Identity Card)\r\n- ProfileModify.Customer.Email\r\n- ProfileModify.Customer.PersonName.GivenName\r\n- ProfileModify.Customer.PersonName.Surname\r\n- ProfileModify.Customer.Telephone.PhoneNumber\r\n- ProfileModify.Customer.CitizenCountryName.Code",
+				"operationId": "DmzGuest_ExternalGuestUpdate",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ProfileModifyRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ProfileModifyRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzGuest/ContactHotel": {
+			
+		},
+		"/api/DmzGuest/IsGuestHasSocialMediaAccounts": {
+			
+		},
+		"/api/DmzGuest/DeleteEndpoint/{deviceID}": {
+			
+		},
+		"/api/DmzGuest/ExternalAttachFileToGuest": {
+			"post": {
+				"tags": [
+					"DmzGuest"
+				],
+				"operationId": "DmzGuest_ExternalAttachFileToGuest",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA_FileAttachmentNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA_FileAttachmentNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzGuest": {
+			
+		},
+		"/api/DmzKeys/IssueKeyCard": {
+			
+		},
+		"/api/DmzLocation/GetCountries": {
+			
+		},
+		"/api/DmzMaintenanceCalls/CreateCall": {
+			
+		},
+		"/api/DmzMaintenanceCalls/GetFails": {
+			
+		},
+		"/api/DmzPOS/GetMenu": {
+			"get": {
+				"tags": [
+					"DmzPOS"
+				],
+				"summary": "returns the available items of the POS menu",
+				"operationId": "DmzPOS_ExternalGetMenu",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request.hotelID",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.outletID",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.ExternalMenuResponse"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzPOS/CreateBon": {
+			"post": {
+				"tags": [
+					"DmzPOS"
+				],
+				"summary": "creates bon in the pms system",
+				"operationId": "DmzPOS_ExternalCreateBon",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.Bon.CreateSpecification"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.BaseDataResponse[Silverbyte.Infra.Framework.Common.Common.POS.Bon.CreateResult]"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservation/RequestKeysByReservationID": {
+			
+		},
+		"/api/DmzReservation/PutReservationGuestProfile": {
+			
+		},
+		"/api/DmzReservation/AddReservationToGuest": {
+			
+		},
+		"/api/DmzReservation/UpdateETA": {
+			
+		},
+		"/api/DmzReservation/ExternalCheckIn": {
+			"put": {
+				"tags": [
+					"DmzReservation"
+				],
+				"summary": " enables the apps to checkin from the mobile.\r\n Used by external users\r\n\r\n Example request body:\r\n {\r\n  \"hotelReservations\": {\r\n    \"hotelReservation\": [\r\n      {\r\n       \"uniqueID\": {\r\n          \"id\": \"13154\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n }\r\n}",
+				"description": "Although the method allows the caller sending multiple reservations, only the first reservation\r\nis the one that will be checked in.",
+				"operationId": "DmzReservation_ExternalCheckIn",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "reservation",
+						"in": "body",
+						"description": "OTA_HotelResNotifRQ",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservation/ExternalPreCheckIn": {
+			
+		},
+		"/api/DmzReservation/ExternalArrived": {
+			"put": {
+				"tags": [
+					"DmzReservation"
+				],
+				"summary": "This will change reservation status from “Reserved” to “Arrived”.\r\n“Arrived” status represents a reservation that its guest has arrived to the hotel but still dosent received a room.\r\nThis action will also change the folio status to open and in some\r\nOptima instances will send a sms to the guest when his room will be available.",
+				"operationId": "DmzReservation_ExternalArrived",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "reservation",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservation/ExternalGetReservations": {
+			"post": {
+				"tags": [
+					"DmzReservation"
+				],
+				"summary": "This action was changed to POST from GET becuase of the complexity of the OTA object",
+				"operationId": "DmzReservation_ExternalGetReservations",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OBSOLETE_OTA_ReadRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservation/ExternalCheckOut": {
+			"put": {
+				"tags": [
+					"DmzReservation"
+				],
+				"summary": " enables the apps to checkout from the mobile.\r\n Used by external users\r\n\r\n Example request body:\r\n {\r\n  \"hotelReservations\": {\r\n    \"hotelReservation\": [\r\n      {\r\n       \"uniqueID\": {\r\n          \"id\": \"13154\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n }\r\n}",
+				"description": "Although the method allows the caller sending multiple reservations, only the first reservation\r\nis the one that will be checked out.",
+				"operationId": "DmzReservation_ExternalCheckOut",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "OTA_HotelResNotifRQ",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservation/GetFolios": {
+			
+		},
+		"/api/DmzReservation/PostInvoice": {
+			
+		},
+		"/api/DmzReservation/UpdateHousekeepingStatus": {
+			
+		},
+		"/api/DmzReservation/UpdateReservationComments": {
+			
+		},
+		"/api/DmzReservation/GetReservationCreditCard": {
+			
+		},
+		"/api/DmzReservation/ExternalReservationUpdate": {
+			"put": {
+				"tags": [
+					"DmzReservation"
+				],
+				"summary": "Patch method.\r\nRequired fields:\r\n- HotelReservations.HotelReservation[].UniqueID.ID: reservation ID\r\nFields available to update:\r\n- HotelReservations.HotelReservation[].ResGuests.ResGuest[].ArrivalTime - in the format of timeSpan \"12:34\"\r\n- HotelReservations.HotelReservation[].ResGlobalInfo.Comments.Commnet[].Text - the new comment text will be added to the existing comments",
+				"operationId": "DmzReservation_ExternalReservationUpdate",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservation/ExternalAttachFileToReservation": {
+			"post": {
+				"tags": [
+					"DmzReservation"
+				],
+				"summary": "Relates a file to optima reservation. the file sent needs to be in the base64 string format.\r\nRequired fields:\r\n- FileAttachmentReferences.FileAttachmentReference[].ContentData - base64 string data content.\r\n- TPA_Extensions.Silverbyte_UniqueID - the reservatino ID.\r\nOptional fields:\r\n- FileAttachmentReferences.FileAttachmentReference[].FileName - the file name.",
+				"operationId": "DmzReservation_ExternalAttachFileToReservation",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA_FileAttachmentNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA_FileAttachmentNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservation/CreateKadabraUrl": {
+			
+		},
+		"/api/DmzReservation": {
+			
+		},
+		"/api/DmzFinance/ExternalPostCharge": {
+			"post": {
+				"tags": [
+					"FinanceDmz"
+				],
+				"summary": "when using this method a debit transaction will be created. (STUB)\r\nFolioID - Posting.Transaction.RevenueDetails.RevenueDetail[].FolioIDs.FolioID[]\r\nTransactionCodeID - Posting.Transaction.RevenueDetails.RevenueDetail[].Silverbyte_TransactionCodeID\r\nCurrencyCode - Posting.Transaction.RevenueDetails.RevenueDetail[].CurrencyCode\r\nAmount - Posting.Transaction.RevenueDetails.RevenueDetail[].ExtendedPrice.AmountBeforeTax / AmountAfterTax\r\nQuantity - Posting.Transaction.RevenueDetails.RevenueDetail[].ExtendedPrice.Quantity",
+				"operationId": "FinanceDmz_ExternalPostCharge",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_ChargePostingRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_ChargePostingRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzFinance/ExternalPostPayment": {
+			"post": {
+				"tags": [
+					"FinanceDmz"
+				],
+				"summary": "FolioID - StayInfo.RevenueCategories.RevenueCategory[].RevenueDetails.RevenueDetail[].FolioIDs.FolioID[]\r\nTransactionCodeID - Silverbyte_TransactionCode\r\nCurrencyCode - StayInfo.HotelReservation.RoomStays.RoomStay[].RoomRates.RoomRate[].Total.CurrencyCodeName - ISO 4217 3 Chars\r\nAmount - StayInfo.HotelReservation.RoomStays.RoomStay[].RoomRates.RoomRate[].Total.AmountBeforeTax / AmountAfterTax\r\nVoucher - AuthorizationDetail.CreditCardAuthorization.ID.ID",
+				"operationId": "FinanceDmz_ExternalPostPayment",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_PaymentCardProcessingRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_PaymentCardProcessingRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzFinance/ExternalAuthorization": {
+			"post": {
+				"tags": [
+					"FinanceDmz"
+				],
+				"operationId": "FinanceDmz_ExternalAuthorization",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_PaymentCardProcessingRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_PaymentCardProcessingRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzFinance/ExternalGetReservationFolios": {
+			"get": {
+				"tags": [
+					"FinanceDmz"
+				],
+				"summary": "get the reservation folios from the PMS\r\nPass the reservationID in \"request.uniqueID.id\"\r\nPass the requested currency in \"request.silverbyte_CurrencyCode\"",
+				"operationId": "FinanceDmz_ExternalGetReservationFolios",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request.pos.source.requestorID.companyName.companyShortName",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.companyName.travelSector",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.companyName.code",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.companyName.codeContext",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.companyName.division",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.companyName.department",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.companyName.value",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.url",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.type",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.instance",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.id",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.iD_Context",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.tpA_Extensions.reservationMasterID",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.requestorID.tpA_Extensions.nationalityID",
+						"in": "query",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "request.pos.source.requestorID.tpA_Extensions.externalGuestID",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.companyName.companyShortName",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.companyName.travelSector",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.companyName.code",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.companyName.codeContext",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.companyName.division",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.companyName.department",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.companyName.value",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.primary",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.bookingChannel.type",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.pos.source.terminalID",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.companyName.companyShortName",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.companyName.travelSector",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.companyName.code",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.companyName.codeContext",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.companyName.division",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.companyName.department",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.companyName.value",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.url",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.type",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.instance",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.id",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.iD_Context",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.tpA_Extensions.reservationMasterID",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.uniqueID.tpA_Extensions.nationalityID",
+						"in": "query",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "request.uniqueID.tpA_Extensions.externalGuestID",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "request.silverbyte_CurrencyCode",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_HotelFolioRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzFinance/FolioReroute": {
+			"put": {
+				"tags": [
+					"FinanceDmz"
+				],
+				"summary": "Reroutes folio charges to new folio",
+				"operationId": "FinanceDmz_ExternalRerouteFolio",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.RerouteFolioRequest"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.RerouteFolioResponse"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzFinance/ExternalGetReservationsValue": {
+			"post": {
+				"tags": [
+					"FinanceDmz"
+				],
+				"summary": "Returns the reservation's future value\r\nusally used before reservation check to calculate the price",
+				"operationId": "FinanceDmz_ExternalGetReservationsValue",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.ExternalReservationValueSpecification"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzG4Data/GetHotels": {
+			
+		},
+		"/api/DmzG4Data/GetLanguages": {
+			
+		},
+		"/api/DmzG4Data/GetCities": {
+			
+		},
+		"/api/DmzG4Data/GetRegions": {
+			
+		},
+		"/api/DmzG4Data/GetGuestAppLanguages": {
+			
+		},
+		"/api/DmzG4Data/WebGateway/{req}": {
+			
+		},
+		"/api/DmzGuestPortalSettings": {
+			
+		},
+		"/api/DmzReservationUpgrades/RoomUpgrade": {
+			
+		},
+		"/api/DmzReservationUpgrades/AddonUpgrade": {
+			
+		},
+		"/api/DmzReservationUpgrades/ExternalAddonUpgrade": {
+			"post": {
+				"tags": [
+					"ReservationUpgradesDmz"
+				],
+				"summary": "Used to add special services / addons to a reservation.\r\nCurrently only supporting add of a special service, no update or delete.",
+				"operationId": "ReservationUpgradesDmz_ExternalAddonUpgrade",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzReservationUpgrades/ExternalRoomUpgrade": {
+			"post": {
+				"tags": [
+					"ReservationUpgradesDmz"
+				],
+				"summary": "Used to add special services / addons to a reservation.\r\nCurrently only supporting add of a special service, no update or delete.",
+				"operationId": "ReservationUpgradesDmz_ExternalRoomUpgrade",
+				"consumes": [
+					"application/json",
+					"text/json",
+					"text/xml",
+					"application/x-www-form-urlencoded"
+				],
+				"produces": [
+					"application/json",
+					"text/json",
+					"text/xml"
+				],
+				"parameters": [
+					{
+						"name": "request",
+						"in": "body",
+						"description": "",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRQ"
+						}
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "access token (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Username",
+						"in": "header",
+						"description": "Username for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Password",
+						"in": "header",
+						"description": "Password for authentication (Optional)",
+						"required": false,
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS"
+						}
+					}
+				}
+			}
+		},
+		"/api/DmzResource/GetMobileResources": {
+			
+		}
+	},
+	"definitions": {
+		"Silverbyte.GuestPortal.ExternalCommon.PasswordForgotRequest": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"hotelChainID": {
+					"type": "string"
+				},
+				"externalApplicationID": {
+					"type": "string"
+				},
+				"langaugeCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.PasswordForgotResult": {
+			"type": "object",
+			"properties": {
+				"isMailSent": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.CurrencyExchangeExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"currencyCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.CurrencyExchangeDTO": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"unit": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"rate": {
+					"format": "double",
+					"type": "number"
+				},
+				"change": {
+					"format": "double",
+					"type": "number"
+				},
+				"updateDate": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.GuestLoginExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"facebookApiID": {
+					"type": "string"
+				},
+				"googleApiID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.GuestLoginResultDTO": {
+			"type": "object",
+			"properties": {
+				"guest": {
+					"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.GuestDTO"
+				},
+				"authToken": {
+					"type": "string"
+				},
+				"kadabraSettings": {
+					"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.KadabraGlobalSettingsDTO"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.GuestDTO": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"userName": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"guestReservations": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"devices": {
+					"type": "object",
+					"additionalProperties": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.DeviceInformationDTO"
+					}
+				},
+				"imageURL": {
+					"type": "string"
+				},
+				"defaultCurrency": {
+					"type": "string"
+				},
+				"defaultLanguage": {
+					"type": "string"
+				},
+				"isSendNotifications": {
+					"type": "boolean"
+				},
+				"facebookApiID": {
+					"type": "string"
+				},
+				"googleApiID": {
+					"type": "string"
+				},
+				"gender": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"birthday": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"externalCredentials": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.ExternalCredentialsDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.KadabraGlobalSettingsDTO": {
+			"type": "object",
+			"properties": {
+				"isShowBookingScreen": {
+					"type": "boolean"
+				},
+				"g4BaseURL": {
+					"type": "string"
+				},
+				"androidVersionCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"iOsVersionCode": {
+					"format": "float",
+					"type": "number"
+				},
+				"kadabraAddReservationMailURL": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.DeviceInformationDTO": {
+			"type": "object",
+			"properties": {
+				"assaAbloy": {
+					"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.AssaAbloyDoorProviderDTO"
+				},
+				"notificationDeviceID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ExternalCredentialsDTO": {
+			"type": "object",
+			"properties": {
+				"appID": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"guestPortalChainID": {
+					"type": "string"
+				},
+				"facebookLoginID": {
+					"type": "string"
+				},
+				"googleLoginID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.AssaAbloyDoorProviderDTO": {
+			"type": "object",
+			"properties": {
+				"invitationCode": {
+					"type": "string"
+				},
+				"endPointId": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.RegisterGuestWithDoorProviderSpecification": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"guestID": {
+					"type": "string"
+				},
+				"deviceUID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.DeviceRegisterSpecification": {
+			"type": "object",
+			"properties": {
+				"deviceUID": {
+					"type": "string"
+				},
+				"notificationID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ProfileModifyRQ": {
+			"type": "object",
+			"properties": {
+				"uniqueID": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+					}
+				},
+				"profileModify": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Profile"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type": {
+			"type": "object",
+			"properties": {
+				"companyName": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyNameType"
+				},
+				"url": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"instance": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"iD_Context": {
+					"type": "string"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type_TPA_Extensions"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Profile": {
+			"type": "object",
+			"properties": {
+				"customer": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Customer"
+				},
+				"prefCollections": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.PrefCollections"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TPA_ExtensionsProfileType"
+				},
+				"companyInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.CompanyInfoType"
+				},
+				"profileType": {
+					"type": "string"
+				},
+				"comments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CommentType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyNameType": {
+			"type": "object",
+			"properties": {
+				"companyShortName": {
+					"type": "string"
+				},
+				"travelSector": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				},
+				"codeContext": {
+					"type": "string"
+				},
+				"division": {
+					"type": "string"
+				},
+				"department": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"reservationMasterID": {
+					"type": "string"
+				},
+				"nationalityID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"externalGuestID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Customer": {
+			"type": "object",
+			"properties": {
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_Customer_TPA_Extensions"
+				},
+				"birthDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"additionalLanguage": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.AdditionalLanguageType"
+					}
+				},
+				"personName": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.PersonName"
+					}
+				},
+				"telephone": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Telephone"
+					}
+				},
+				"document": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Document"
+					}
+				},
+				"email": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"address": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Address"
+					}
+				},
+				"customerValue": {
+					"type": "string"
+				},
+				"gender": {
+					"type": "string"
+				},
+				"paymentForm": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.CustomerPaymentFromType"
+					}
+				},
+				"citizenCountryName": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.CitizenCountryNameType"
+					}
+				},
+				"custLoyalty": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.CustLoyalty"
+					}
+				},
+				"contactPerson": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactPersonType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.PrefCollections": {
+			"type": "object",
+			"properties": {
+				"prefCollection": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.PrefCollection"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.TPA_ExtensionsProfileType": {
+			"type": "object",
+			"properties": {
+				"silverbyte_HotelID": {
+					"type": "string"
+				},
+				"silverbyte_GuestAllowSMS": {
+					"type": "boolean"
+				},
+				"silverbyte_GuestAllowEmail": {
+					"type": "boolean"
+				},
+				"silverbyte_GuestAgreePolicy": {
+					"type": "boolean"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.CompanyInfoType": {
+			"type": "object",
+			"properties": {
+				"companyName": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyNameType"
+				},
+				"silverbyte_CompanyName": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyNameType"
+					}
+				},
+				"addressInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyInfoTypeAddressInfo"
+				},
+				"telephoneInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyInfoTypeTelephoneInfo"
+				},
+				"contactPerson": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactPersonType"
+				},
+				"email": {
+					"type": "string"
+				},
+				"businessLocale": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AddressType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CommentType": {
+			"type": "object",
+			"properties": {
+				"comment": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Comment"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_Customer_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"income": {
+					"format": "double",
+					"type": "number"
+				},
+				"currencySymbol": {
+					"type": "string"
+				},
+				"anniversaryDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"resrvasionGuestCategoryCode": {
+					"type": "string"
+				},
+				"resrvasionGuestCategory": {
+					"type": "string"
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Image"
+					}
+				},
+				"hotelCode": {
+					"type": "string"
+				},
+				"isCashBasis": {
+					"type": "boolean"
+				},
+				"isReservationMainGuest": {
+					"type": "boolean"
+				},
+				"silverbyte_EmailOptInStatus": {
+					"enum": [
+						"OptedIn",
+						"OptedOut",
+						"Unknown"
+					],
+					"type": "string"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.AdditionalLanguageType": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.PersonName": {
+			"type": "object",
+			"properties": {
+				"namePrefix": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"givenName": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"surname": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"nameType": {
+					"format": "int32",
+					"enum": [
+						1,
+						2,
+						3,
+						4
+					],
+					"type": "integer"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.PersonName_TPA_Extensions"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Telephone": {
+			"type": "object",
+			"properties": {
+				"formattedInd": {
+					"type": "string"
+				},
+				"phoneLocationType": {
+					"type": "string"
+				},
+				"phoneNumber": {
+					"type": "string"
+				},
+				"phoneTechType": {
+					"type": "string"
+				},
+				"phoneUseType": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Document": {
+			"type": "object",
+			"properties": {
+				"additionalPersonNames": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalPersonNames"
+				},
+				"docHolderFormattedName": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.PersonName"
+				},
+				"docHolderName": {
+					"type": "string"
+				},
+				"docLimitations": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TPA_Extensions_Document"
+				},
+				"docID": {
+					"type": "string"
+				},
+				"docType": {
+					"format": "int32",
+					"enum": [
+						1,
+						2
+					],
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Address": {
+			"type": "object",
+			"properties": {
+				"addressType": {
+					"type": "string"
+				},
+				"otherAddressType": {
+					"type": "string"
+				},
+				"countryCode": {
+					"type": "string"
+				},
+				"addressLine": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"cityName": {
+					"type": "string"
+				},
+				"postalCode": {
+					"type": "string"
+				},
+				"stateProv": {
+					"type": "string"
+				},
+				"countryName": {
+					"type": "string"
+				},
+				"streetNmbr": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.CustomerPaymentFromType": {
+			"type": "object",
+			"properties": {
+				"cash": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.CashType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.CitizenCountryNameType": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "string"
+				},
+				"defaultInd": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.CustLoyalty": {
+			"type": "object",
+			"properties": {
+				"allianceLoyaltyLevelName": {
+					"type": "string"
+				},
+				"loyalLevelCode": {
+					"type": "string"
+				},
+				"membershipID": {
+					"type": "string"
+				},
+				"silverbyte_MembershipStatus": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactPersonType": {
+			"type": "object",
+			"properties": {
+				"personName": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.PersonName"
+				},
+				"telephone": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Telephone"
+					}
+				},
+				"address": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Address"
+					}
+				},
+				"email": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Email"
+					}
+				},
+				"companyName": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyNameType"
+					}
+				},
+				"employeeInfo": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.EmployeeInfo"
+					}
+				},
+				"contactType": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.PrefCollection": {
+			"type": "object",
+			"properties": {
+				"hotelPref": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.HotelPref"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyInfoTypeAddressInfo": {
+			"type": "object",
+			"properties": {
+				"addressLine": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyInfoTypeTelephoneInfo": {
+			"type": "object",
+			"properties": {
+				"formattedInd": {
+					"type": "string"
+				},
+				"phoneTechType": {
+					"type": "string"
+				},
+				"phoneNumber": {
+					"type": "string"
+				},
+				"phoneUseType": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AddressType": {
+			"type": "object",
+			"properties": {
+				"addressLine": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"cityName": {
+					"type": "string"
+				},
+				"postalCode": {
+					"type": "string"
+				},
+				"countryName": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CountryNameType"
+				},
+				"stateProv": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.StateProvType"
+				},
+				"type": {
+					"type": "string"
+				},
+				"formattedInd": {
+					"type": "string"
+				},
+				"defaultInd": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Comment": {
+			"type": "object",
+			"properties": {
+				"item": {
+					"type": "object"
+				},
+				"itemElementName": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"commentType": {
+					"type": "string"
+				},
+				"insertUser": {
+					"type": "string"
+				},
+				"insertDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"insertDateSpecified": {
+					"type": "boolean"
+				},
+				"updateUser": {
+					"type": "string"
+				},
+				"updateDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"updateDateSpecified": {
+					"type": "boolean"
+				},
+				"inactiveDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"inactiveDateSpecified": {
+					"type": "boolean"
+				},
+				"text": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Image": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"base64Data": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.PersonName_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"invoiceFirstName": {
+					"type": "string"
+				},
+				"invoiceLastName": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalPersonNames": {
+			"type": "object",
+			"properties": {
+				"additionalPersonName": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.TPA_Extensions_Document": {
+			"type": "object",
+			"properties": {
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.CashType": {
+			"type": "object",
+			"properties": {
+				"cashIndicator": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Email": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.EmployeeInfo": {
+			"type": "object",
+			"properties": {
+				"employeeId": {
+					"type": "string"
+				},
+				"employeeLevel": {
+					"type": "string"
+				},
+				"employeeTitle": {
+					"type": "string"
+				},
+				"employeeStatus": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.HotelPref": {
+			"type": "object",
+			"properties": {
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.HotelIdentity"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CountryNameType": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.StateProvType": {
+			"type": "object",
+			"properties": {
+				"stateCode": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.HotelIdentity": {
+			"type": "object",
+			"properties": {
+				"hotelCode": {
+					"type": "string"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ProfileModifyRS": {
+			"type": "object",
+			"properties": {
+				"uniqueID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				},
+				"silverbyte_OriginalRequest": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				},
+				"warnings": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"replyTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType": {
+			"type": "object",
+			"properties": {
+				
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType": {
+			"type": "object",
+			"properties": {
+				"error": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType": {
+			"type": "object",
+			"properties": {
+				"warning": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorType": {
+			"type": "object",
+			"properties": {
+				"nodeList": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"recordID": {
+					"type": "string"
+				},
+				"shortText": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				},
+				"docURL": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"tag": {
+					"type": "string"
+				},
+				"text": {
+					"type": "string"
+				},
+				"silverbyte_PMSReservationNumber": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningType": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"shortText": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"nodeList": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ContactHotelSpecification": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"mailToSend": {
+					"type": "string"
+				},
+				"subject": {
+					"type": "string"
+				},
+				"body": {
+					"type": "string"
+				},
+				"guestFullName": {
+					"type": "string"
+				},
+				"guestPhoneNumber": {
+					"type": "string"
+				},
+				"mailCC": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.MailSendResult": {
+			"type": "object",
+			"properties": {
+				"isMailSent": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.SocialMediaSpecification": {
+			"type": "object",
+			"properties": {
+				"facebookApiID": {
+					"type": "string"
+				},
+				"googleApiID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.EndpointDeleteResult": {
+			"type": "object",
+			"properties": {
+				"isDeleted": {
+					"type": "boolean"
+				},
+				"responseStatusCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA_FileAttachmentNotifRQ": {
+			"type": "object",
+			"properties": {
+				"fileAttachmentReferences": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.FileAttachmentReferences"
+				},
+				"pos": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_POS"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.FileAttachTPA_Extensions"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.FileAttachmentReferences": {
+			"type": "object",
+			"properties": {
+				"fileAttachmentReference": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.FileAttachmentReference"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_POS": {
+			"type": "object",
+			"properties": {
+				"source": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SourceType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.FileAttachTPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"silverbyte_UniqueID": {
+					"type": "string"
+				},
+				"silverbyte_HotelID": {
+					"type": "string"
+				},
+				"isSignFileDigitally": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.FileAttachmentReference": {
+			"type": "object",
+			"properties": {
+				"contentCaption": {
+					"type": "string"
+				},
+				"contentData": {
+					"type": "string"
+				},
+				"fileName": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"codeDetail": {
+					"type": "string"
+				},
+				"id": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SourceType": {
+			"type": "object",
+			"properties": {
+				"requestorID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				},
+				"bookingChannel": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SourceTypeBookingChannel"
+				},
+				"terminalID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SourceTypeBookingChannel": {
+			"type": "object",
+			"properties": {
+				"companyName": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyNameType"
+				},
+				"primary": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA_FileAttachmentNotifRS": {
+			"type": "object",
+			"properties": {
+				"silverbyte_OriginalRequest": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				},
+				"warnings": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"replyTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.GuestExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"guestID": {
+					"type": "string"
+				},
+				"reservationID": {
+					"type": "string"
+				},
+				"facebookApiID": {
+					"type": "string"
+				},
+				"googleApiID": {
+					"type": "string"
+				},
+				"deviceID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.HTNG_HotelKeyEncodeRQ": {
+			"type": "object",
+			"properties": {
+				"pos": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_POS"
+				},
+				"uniqueID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				},
+				"hotelKeyEncode": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.HotelKeyEncodeType"
+				},
+				"silverbyte_HotelID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_POS": {
+			"type": "object",
+			"properties": {
+				"source": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SourceType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.HotelKeyEncodeType": {
+			"type": "object",
+			"properties": {
+				"keyType": {
+					"type": "string"
+				},
+				"quantity": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"encoder": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.EncoderType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.EncoderType": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"timeSpen": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.TimeSpanType"
+				},
+				"roomType": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomTypeType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.TimeSpanType": {
+			"type": "object",
+			"properties": {
+				"endSpecified": {
+					"type": "boolean"
+				},
+				"end": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"start": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomTypeType": {
+			"type": "object",
+			"properties": {
+				"occupancy": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomTypeTypeOccupancy"
+					}
+				},
+				"roomDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType"
+				},
+				"additionalDetails": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalDetailsType"
+				},
+				"isAlternate": {
+					"type": "boolean"
+				},
+				"numberOfUnits": {
+					"type": "string"
+				},
+				"isRoom": {
+					"type": "boolean"
+				},
+				"roomType": {
+					"type": "string"
+				},
+				"roomTypeCode": {
+					"type": "string"
+				},
+				"roomCategory": {
+					"type": "string"
+				},
+				"roomID": {
+					"type": "string"
+				},
+				"floor": {
+					"type": "string"
+				},
+				"roomLocationCode": {
+					"type": "string"
+				},
+				"bedTypeCode": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"quantity": {
+					"type": "string"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_OTA_RoomTypeType_TPA_ExtensionsType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomTypeTypeOccupancy": {
+			"type": "object",
+			"properties": {
+				"minOccupancy": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"maxOccupancy": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"ageQualifyingCode": {
+					"type": "string"
+				},
+				"minAge": {
+					"type": "string"
+				},
+				"maxAge": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType": {
+			"type": "object",
+			"properties": {
+				"text": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.FormattedTextTextType"
+				},
+				"image": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalDetailsType": {
+			"type": "object",
+			"properties": {
+				"additionalDetail": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalDetailType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_OTA_RoomTypeType_TPA_ExtensionsType": {
+			"type": "object",
+			"properties": {
+				"roomNumber": {
+					"type": "string"
+				},
+				"roomName": {
+					"type": "string"
+				},
+				"roomCatTypeCode": {
+					"type": "string"
+				},
+				"isActive": {
+					"type": "boolean"
+				},
+				"displayOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"numberOfSingleBeds": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"numberOfDoubleBeds": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"numberOfExtraBeds": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.FormattedTextTextType": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "string"
+				},
+				"language": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalDetailType": {
+			"type": "object",
+			"properties": {
+				"detailDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.HTNG_HotelKeyEncodeRS": {
+			"type": "object",
+			"properties": {
+				"silverbyte_OriginalRequest": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				},
+				"warnings": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"replyTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.CountrySpecification": {
+			"type": "object",
+			"properties": {
+				"alpha3Code": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.CountryDTO": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"alpha2Code": {
+					"type": "string"
+				},
+				"alpha3Code": {
+					"type": "string"
+				},
+				"numericCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"states": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.StateDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.StateDTO": {
+			"type": "object",
+			"properties": {
+				"alpha2Code": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.Maintenance.CreateSpecification": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"failCode": {
+					"type": "string"
+				},
+				"failDescription": {
+					"type": "string"
+				},
+				"hotelID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.Maintenance.CreateResult": {
+			"type": "object",
+			"properties": {
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				},
+				"errorJSON": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.Maintenance.GetFailsSpecification": {
+			"type": "object",
+			"properties": {
+				"groupIDs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"hotelID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.BaseDataResponse[System.Collections.Generic.List[Silverbyte.Infra.Framework.Common.Common.Maintenance.FailDTO]]": {
+			"type": "object",
+			"properties": {
+				"result": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.Maintenance.FailDTO"
+					}
+				},
+				"responseCorrelationID": {
+					"type": "string"
+				},
+				"originalRequest": {
+					"type": "string"
+				},
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errors": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.CodedMessage"
+					}
+				},
+				"warnings": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.CodedMessage"
+					}
+				},
+				"executionDuration": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.Maintenance.FailDTO": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"departmentID": {
+					"type": "string"
+				},
+				"departmentName": {
+					"type": "string"
+				},
+				"failGroupID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.CodedMessage": {
+			"type": "object",
+			"properties": {
+				"code": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				},
+				"extraDetails": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.POS.MenuExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"hotelID": {
+					"type": "string"
+				},
+				"outletID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ExternalMenuResponse": {
+			"type": "object",
+			"properties": {
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				},
+				"menu": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.GroupDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.POS.GroupDTO": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.ItemDTO"
+					}
+				},
+				"groups": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.GroupDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.POS.ItemDTO": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"priceAfterTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"isToForceSupplements": {
+					"type": "boolean"
+				},
+				"isToForceInstructions": {
+					"type": "boolean"
+				},
+				"quantity": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"currency": {
+					"type": "string"
+				},
+				"supplements": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.SupplemntDTO"
+					}
+				},
+				"instructions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.InstructionDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.POS.SupplemntDTO": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"priceAfterTax": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.POS.InstructionDTO": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.POS.Bon.CreateSpecification": {
+			"type": "object",
+			"properties": {
+				"hotelID": {
+					"type": "string"
+				},
+				"outletID": {
+					"type": "string"
+				},
+				"reservationID": {
+					"type": "string"
+				},
+				"items": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.ItemDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.BaseDataResponse[Silverbyte.Infra.Framework.Common.Common.POS.Bon.CreateResult]": {
+			"type": "object",
+			"properties": {
+				"result": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.Common.POS.Bon.CreateResult"
+				},
+				"responseCorrelationID": {
+					"type": "string"
+				},
+				"originalRequest": {
+					"type": "string"
+				},
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errors": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.CodedMessage"
+					}
+				},
+				"warnings": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.CodedMessage"
+					}
+				},
+				"executionDuration": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.Common.POS.Bon.CreateResult": {
+			"type": "object",
+			"properties": {
+				"bonNumber": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.RequestKeysSpecification": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"deviceID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.IssueKeyDeviceResultDTO": {
+			"type": "object",
+			"properties": {
+				"issueKeyDetails": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.IssueKeyDeviceResult"
+					}
+				},
+				"isSuccessful": {
+					"type": "boolean",
+					"readOnly": true
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.IssueKeyDeviceResult": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"guestID": {
+					"type": "string"
+				},
+				"deviceID": {
+					"type": "string"
+				},
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ReservationDTO": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"hotelName": {
+					"type": "string"
+				},
+				"guestPortalHotelID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"guestPortalHotelChainID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"hotelChainName": {
+					"type": "string"
+				},
+				"hotelRating": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"hotelAddress": {
+					"type": "string"
+				},
+				"hotelPhone": {
+					"type": "string"
+				},
+				"hotelEmail": {
+					"type": "string"
+				},
+				"hotelImage": {
+					"type": "string"
+				},
+				"hotelWebSite": {
+					"type": "string"
+				},
+				"pmsHotelID": {
+					"type": "string"
+				},
+				"pmsHotelChainID": {
+					"type": "string"
+				},
+				"pmsInternalReservationID": {
+					"type": "string"
+				},
+				"pmsExternalReservationID": {
+					"type": "string"
+				},
+				"pmsReservationPrivateKey": {
+					"type": "string"
+				},
+				"arrivalDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"departureDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"roomNumber": {
+					"type": "string"
+				},
+				"roomTypeCode": {
+					"type": "string"
+				},
+				"roomTypeName": {
+					"type": "string"
+				},
+				"roomTypeUpgradedFromName": {
+					"type": "string"
+				},
+				"roomTypeUpgradedFromCode": {
+					"type": "string"
+				},
+				"saleChannelName": {
+					"type": "string"
+				},
+				"rateCode": {
+					"type": "string"
+				},
+				"isRoomOpen": {
+					"type": "boolean"
+				},
+				"isDoNotDisturb": {
+					"type": "boolean"
+				},
+				"isDoNotForwardCalls": {
+					"type": "boolean"
+				},
+				"isEarlyCheckedIn": {
+					"type": "boolean"
+				},
+				"status": {
+					"type": "string"
+				},
+				"eta": {
+					"type": "string"
+				},
+				"etd": {
+					"type": "string"
+				},
+				"productName": {
+					"type": "string"
+				},
+				"planCode": {
+					"type": "string"
+				},
+				"planName": {
+					"type": "string"
+				},
+				"totalPrice": {
+					"format": "double",
+					"type": "number"
+				},
+				"currencyName": {
+					"type": "string"
+				},
+				"hotelCurrencyCode": {
+					"type": "string"
+				},
+				"voucherNumber": {
+					"type": "string"
+				},
+				"paymentBy": {
+					"type": "string"
+				},
+				"reservationImages": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"longitude": {
+					"type": "string"
+				},
+				"latitude": {
+					"type": "string"
+				},
+				"g4_HotelID": {
+					"type": "string"
+				},
+				"isSecretOfferUsed": {
+					"type": "boolean"
+				},
+				"guestDetails": {
+					"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.ReservationGuest"
+				},
+				"weatherData": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.OpenWeatherMapData"
+				},
+				"doorProviderType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1
+					],
+					"type": "integer"
+				},
+				"lockSerivceCode": {
+					"type": "string"
+				},
+				"roomCatTypeCode": {
+					"type": "string"
+				},
+				"addons": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.ReservationAddonsDTO"
+					}
+				},
+				"assaAbloyDoor": {
+					"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.AssaAbloyDoorProviderDTO"
+				},
+				"isFileAttached": {
+					"type": "boolean"
+				},
+				"isChargeVat": {
+					"type": "boolean"
+				},
+				"isPrecheckinMailSent": {
+					"type": "boolean"
+				},
+				"isPrecheckoutMailSent": {
+					"type": "boolean"
+				},
+				"folioRerouteTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ReservationGuest": {
+			"type": "object",
+			"properties": {
+				"pmsInternalGuestID": {
+					"type": "string"
+				},
+				"firstName": {
+					"type": "string"
+				},
+				"lastName": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				},
+				"mobile": {
+					"type": "string"
+				},
+				"adults": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"teens": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"children": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"infants": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"passport": {
+					"type": "string"
+				},
+				"identityCardNumber": {
+					"type": "string"
+				},
+				"postalCode": {
+					"type": "string"
+				},
+				"nationalityCode": {
+					"type": "string"
+				},
+				"countryName": {
+					"type": "string"
+				},
+				"stateName": {
+					"type": "string"
+				},
+				"city": {
+					"type": "string"
+				},
+				"streetAndNumber": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.OpenWeatherMapData": {
+			"type": "object",
+			"properties": {
+				"city": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.OpenWeatherMapCity"
+				},
+				"list": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.OpenWeatherMapWeather"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ReservationAddonsDTO": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.OpenWeatherMapCity": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.OpenWeatherMapWeather": {
+			"type": "object",
+			"properties": {
+				"main": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.OpenWeatherMapMainTemps"
+				},
+				"weather": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.OpenWeatherMapWeatherDetails"
+					}
+				},
+				"dt_txt": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.OpenWeatherMapMainTemps": {
+			"type": "object",
+			"properties": {
+				"temp": {
+					"type": "string"
+				},
+				"temp_min": {
+					"type": "string"
+				},
+				"temp_max": {
+					"type": "string"
+				},
+				"pressure": {
+					"type": "string"
+				},
+				"sea_level": {
+					"type": "string"
+				},
+				"grnd_level": {
+					"type": "string"
+				},
+				"humidity": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.OpenWeatherMapWeatherDetails": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"main": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"icon": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.AddReservationToGuestSpecification": {
+			"type": "object",
+			"properties": {
+				"pmsReservationPrivateKey": {
+					"type": "string"
+				},
+				"reservationID": {
+					"type": "string"
+				},
+				"userID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRS": {
+			"type": "object",
+			"properties": {
+				"hotelReservations": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.HotelReservations"
+				},
+				"silverbyte_OTABookingConfirm": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA_BookingConfirm"
+					}
+				},
+				"silverbyte_OriginalRequest": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				},
+				"warnings": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"replyTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.HotelReservations": {
+			"type": "object",
+			"properties": {
+				"hotelReservation": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.HotelReservation"
+					}
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.TPA_Extensions_HotelReservations"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA_BookingConfirm": {
+			"type": "object",
+			"properties": {
+				"reservationId": {
+					"type": "string"
+				},
+				"pmsReservationId": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"pmsReservationNumber": {
+					"type": "string"
+				},
+				"isSuccess": {
+					"type": "boolean"
+				},
+				"errors": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"errorEnumCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"errorOptionalParameters": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"userName": {
+					"type": "string"
+				},
+				"userId": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"httpStatusCode": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"guestID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.HotelReservation": {
+			"type": "object",
+			"properties": {
+				"resGlobalInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGlobalInfo"
+				},
+				"createDateTime": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"resStatus": {
+					"type": "string"
+				},
+				"creator": {
+					"type": "string"
+				},
+				"pos": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_POS"
+				},
+				"uniqueID": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+					}
+				},
+				"billingInstructionCode": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.BillingInstructionCodeType"
+				},
+				"resGuests": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGuestsType"
+				},
+				"roomStays": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomStays"
+				},
+				"services": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ServicesType"
+				},
+				"extraTransactionId": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"silverbyte_MasterId": {
+					"type": "string"
+				},
+				"silverbyte_ChannelManagerReservationStatus": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2,
+						3
+					],
+					"type": "integer"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.SilverByte_HotelReservation_TPA_Extensions"
+				},
+				"creatorID": {
+					"type": "string"
+				},
+				"lastModifierID": {
+					"type": "string"
+				},
+				"lastModifyDateTime": {
+					"type": "string"
+				},
+				"roomStayReservation": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.TPA_Extensions_HotelReservations": {
+			"type": "object",
+			"properties": {
+				"customAttributes": {
+					"type": "object"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGlobalInfo": {
+			"type": "object",
+			"properties": {
+				"basicPropertyInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.BasicPropertyInfo"
+				},
+				"totalPrice": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType"
+				},
+				"hotelReservationIDs": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelReservationIDs"
+				},
+				"depositPayments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RequiredPaymentsType"
+				},
+				"timeSpan": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ResCommonDetailTypeTimeSpan"
+				},
+				"profiles": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ProfilesType"
+				},
+				"comments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CommentType"
+				},
+				"guarantee": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Guarantee"
+				},
+				"fees": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.FeesType"
+				},
+				"total": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType"
+				},
+				"guestCounts": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.GuestCounts"
+				},
+				"specialRequests": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SpecialRequests"
+				},
+				"cancelPenalties": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CancelPenaltiesType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.BillingInstructionCodeType": {
+			"type": "object",
+			"properties": {
+				"accountNumber": {
+					"type": "string"
+				},
+				"billingCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGuestsType": {
+			"type": "object",
+			"properties": {
+				"resGuest": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGuest"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomStays": {
+			"type": "object",
+			"properties": {
+				"roomStay": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomStaysTypeRoomStay"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ServicesType": {
+			"type": "object",
+			"properties": {
+				"service": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.SilverByte_HotelReservation_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"reservationVisibleGuestComments": {
+					"type": "string"
+				},
+				"pmsReservationPrivateKey": {
+					"type": "string"
+				},
+				"cmReservationProcessUniqueId": {
+					"type": "string"
+				},
+				"wingID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"wingCode": {
+					"type": "string"
+				},
+				"isReservationPreCheckedIn": {
+					"type": "boolean"
+				},
+				"silverbyte_FirmName": {
+					"type": "string"
+				},
+				"folioRerouteTo": {
+					"type": "string"
+				},
+				"silverbyte_UniqueID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				},
+				"marketSegment": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.MarketSegment"
+				},
+				"channelHotelID": {
+					"type": "string"
+				},
+				"color": {
+					"type": "string"
+				},
+				"folioNumber": {
+					"type": "string"
+				},
+				"reservationSource": {
+					"type": "string"
+				},
+				"guestPortalReservationPrivateKey": {
+					"type": "string"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.BasicPropertyInfo": {
+			"type": "object",
+			"properties": {
+				"hotelCode": {
+					"type": "string"
+				},
+				"hotelName": {
+					"type": "string"
+				},
+				"chainCode": {
+					"type": "string"
+				},
+				"chainName": {
+					"type": "string"
+				},
+				"contactNumbers": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactNumbersType"
+				},
+				"address": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Address"
+				},
+				"silverbyte_ChainId": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType": {
+			"type": "object",
+			"properties": {
+				"amountAfterTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"amountBeforeTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"taxes": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Taxes"
+				},
+				"decimalPlaces": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"currencyCodeName": {
+					"type": "string"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType_TPA_Extensions"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelReservationIDs": {
+			"type": "object",
+			"properties": {
+				"hotelReservationID": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelReservationID"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RequiredPaymentsType": {
+			"type": "object",
+			"properties": {
+				"guaranteePayment": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RequiredPaymentsTypeGuaranteePayment"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ResCommonDetailTypeTimeSpan": {
+			"type": "object",
+			"properties": {
+				"duration": {
+					"type": "string"
+				},
+				"end": {
+					"type": "string"
+				},
+				"start": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ProfilesType": {
+			"type": "object",
+			"properties": {
+				"profileInfo": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ProfilesTypeProfileInfo"
+					}
+				},
+				"customer": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Customer"
+				},
+				"profileType": {
+					"type": "string"
+				},
+				"rph": {
+					"type": "string"
+				},
+				"affiliations": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AffiliationsType"
+				},
+				"comments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CommentType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Guarantee": {
+			"type": "object",
+			"properties": {
+				"guaranteesAccepted": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.GuaranteesAccepted"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.FeesType": {
+			"type": "object",
+			"properties": {
+				"fee": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.FeeType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.GuestCounts": {
+			"type": "object",
+			"properties": {
+				"guestCount": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.GuestCount"
+					}
+				},
+				"isPerRoom": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SpecialRequests": {
+			"type": "object",
+			"properties": {
+				"specialRequest": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SpecialRequest"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CancelPenaltiesType": {
+			"type": "object",
+			"properties": {
+				"cancelPenaltyList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CancelPenaltyType"
+					}
+				},
+				"cancelPolicyIndicator": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGuest": {
+			"type": "object",
+			"properties": {
+				"profiles": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ProfilesType"
+				},
+				"comments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CommentType"
+				},
+				"arrivalTime": {
+					"type": "string"
+				},
+				"departureTime": {
+					"type": "string"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGuestTPA_ExtensionsType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomStaysTypeRoomStay": {
+			"type": "object",
+			"properties": {
+				"roomTypes": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomTypes"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_RoomStay_TPA_Extensions"
+				},
+				"roomRates": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomRates"
+				},
+				"ratePlans": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlans"
+				},
+				"guestCounts": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.GuestCounts"
+				},
+				"timeSpan": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.DateTimeSpan"
+				},
+				"total": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType"
+				},
+				"basicPropertyInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.BasicPropertyInfo"
+				},
+				"comments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CommentType"
+				},
+				"specialRequests": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SpecialRequests"
+				},
+				"serviceRPHs": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceRPHsType"
+				},
+				"guarantee": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Guarantee"
+					}
+				},
+				"roomStayStatus": {
+					"type": "string"
+				},
+				"availableIndicator": {
+					"type": "boolean"
+				},
+				"cancelPenalties": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CancelPenaltiesType"
+				},
+				"indexNumber": {
+					"type": "string"
+				},
+				"marketCode": {
+					"type": "string"
+				},
+				"sourceOfBusiness": {
+					"type": "string"
+				},
+				"promotionCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceType": {
+			"type": "object",
+			"properties": {
+				"price": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AmountType"
+					}
+				},
+				"serviceDetails": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceTypeServiceDetails"
+				},
+				"quantity": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"serviceCategoryCode": {
+					"type": "string"
+				},
+				"serviceRPH": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Service_TPA_Extensions"
+				},
+				"iD_Context": {
+					"type": "string"
+				},
+				"inclusive": {
+					"type": "string"
+				},
+				"serviceInventoryCode": {
+					"type": "string"
+				},
+				"servicePricingType": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.MarketSegment": {
+			"type": "object",
+			"properties": {
+				"marketSegmentCode": {
+					"type": "string"
+				},
+				"text": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactNumbersType": {
+			"type": "object",
+			"properties": {
+				"contactNumber": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactNumberType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Taxes": {
+			"type": "object",
+			"properties": {
+				"listTaxes": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Tax"
+					}
+				},
+				"amount": {
+					"type": "string"
+				},
+				"decimalPlaces": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"currencyCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"hotelCurrencyCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelReservationID": {
+			"type": "object",
+			"properties": {
+				"resID_Type": {
+					"type": "string"
+				},
+				"resID_Value": {
+					"type": "string"
+				},
+				"resID_Source": {
+					"type": "string"
+				},
+				"forGuest": {
+					"type": "string"
+				},
+				"resID_SourceContext": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RequiredPaymentsTypeGuaranteePayment": {
+			"type": "object",
+			"properties": {
+				"acceptedPayments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AcceptedPaymentsType"
+				},
+				"amountPercent": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AmountPercent"
+				},
+				"deadline": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Deadline"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ProfilesTypeProfileInfo": {
+			"type": "object",
+			"properties": {
+				"profile": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Profile"
+				},
+				"uniqueID": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AffiliationsType": {
+			"type": "object",
+			"properties": {
+				"travelArranger": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TravelArrangerType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.GuaranteesAccepted": {
+			"type": "object",
+			"properties": {
+				"guaranteeAccepted": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.GuaranteeAccepted"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.FeeType": {
+			"type": "object",
+			"properties": {
+				"amount": {
+					"format": "double",
+					"type": "number"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				},
+				"taxInclusiveInd": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.GuestCount": {
+			"type": "object",
+			"properties": {
+				"ageQualifyingCode": {
+					"format": "int32",
+					"enum": [
+						0,
+						7,
+						8,
+						9,
+						10
+					],
+					"type": "integer"
+				},
+				"count": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"age": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SpecialRequest": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"text": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CancelPenaltyType": {
+			"type": "object",
+			"properties": {
+				"end": {
+					"type": "string"
+				},
+				"start": {
+					"type": "string"
+				},
+				"deadline": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Deadline"
+				},
+				"amountPercent": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AmountPercent"
+				},
+				"penaltyDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType"
+				},
+				"policyCode": {
+					"type": "string"
+				},
+				"nonRefundable": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ResGuestTPA_ExtensionsType": {
+			"type": "object",
+			"properties": {
+				"isGuestTaxExempt": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomTypes": {
+			"type": "object",
+			"properties": {
+				"roomType": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomTypeType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_RoomStay_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"silverByte_Confirmation": {
+					"type": "string"
+				},
+				"roomStayID": {
+					"type": "string"
+				},
+				"silverbyte_ProductID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomRates": {
+			"type": "object",
+			"properties": {
+				"roomRate": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomRate"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlans": {
+			"type": "object",
+			"properties": {
+				"hotelCode": {
+					"type": "string"
+				},
+				"ratePlan": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelRatePlanType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.DateTimeSpan": {
+			"type": "object",
+			"properties": {
+				"start": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"duration": {
+					"type": "string"
+				},
+				"end": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceRPHsType": {
+			"type": "object",
+			"properties": {
+				"serviceRPH": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceRPHType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AmountType": {
+			"type": "object",
+			"properties": {
+				"fees": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.FeesType"
+				},
+				"base": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType"
+				},
+				"ageQualifiyingCode": {
+					"format": "int32",
+					"enum": [
+						0,
+						7,
+						8,
+						9,
+						10
+					],
+					"type": "integer"
+				},
+				"chargeType": {
+					"format": "int32",
+					"enum": [
+						0,
+						7,
+						25
+					],
+					"type": "integer"
+				},
+				"total": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType"
+				},
+				"rateDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RateDescription"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceTypeServiceDetails": {
+			"type": "object",
+			"properties": {
+				"serviceDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType"
+				},
+				"guestCounts": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.GuestCounts"
+				},
+				"comments": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CommentType"
+				},
+				"timeSpan": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.DateTimeSpan"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Service_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"isSpecialOffer": {
+					"type": "boolean"
+				},
+				"isPosted": {
+					"type": "boolean"
+				},
+				"paymentFlag": {
+					"type": "string"
+				},
+				"specialSerivceOrigin": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactNumberType": {
+			"type": "object",
+			"properties": {
+				"phoneNumber": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Tax": {
+			"type": "object",
+			"properties": {
+				"amount": {
+					"format": "double",
+					"type": "number"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"decimalPlaces": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"taxDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.TaxDescription"
+				},
+				"silverbyte_TaxTransactionCodeID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AcceptedPaymentsType": {
+			"type": "object",
+			"properties": {
+				"acceptedPayment": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AcceptedPaymentsTypeAcceptedPayment"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AmountPercent": {
+			"type": "object",
+			"properties": {
+				"amount": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"basisType": {
+					"type": "string"
+				},
+				"nmbrOfNights": {
+					"type": "string"
+				},
+				"percent": {
+					"type": "string"
+				},
+				"taxInclusive": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Deadline": {
+			"type": "object",
+			"properties": {
+				"absoluteDeadline": {
+					"type": "string"
+				},
+				"offsetDropTime": {
+					"type": "string"
+				},
+				"offsetTimeUnit": {
+					"type": "string"
+				},
+				"offsetUnitMultiplier": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.TravelArrangerType": {
+			"type": "object",
+			"properties": {
+				"travelSector": {
+					"type": "string"
+				},
+				"companyShortName": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				},
+				"codeContext": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.GuaranteeAccepted": {
+			"type": "object",
+			"properties": {
+				"paymentCard": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.PaymentCardType"
+				},
+				"silverbyte_Payer_UniqueID": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+					}
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_TPA_Extensions"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RoomRate": {
+			"type": "object",
+			"properties": {
+				"silverbyte_ChannelManagerGeneratedProductId": {
+					"type": "string"
+				},
+				"silverbyte_PmsProductId": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"roomTypeCode": {
+					"type": "string"
+				},
+				"roomID": {
+					"type": "string"
+				},
+				"ratePlanCode": {
+					"type": "string"
+				},
+				"numberOfUnits": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"rates": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RateType"
+				},
+				"total": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelRatePlanType": {
+			"type": "object",
+			"properties": {
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_OTA_HotelRatePlanRQRatePlan_TPA_ExtensionsType"
+				},
+				"dateRange": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.DateRange"
+				},
+				"ratePlanCandidates": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidates"
+				},
+				"bookingRules": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.BookingRules"
+				},
+				"rates": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RateType"
+				},
+				"ratePlanNotifType": {
+					"type": "string"
+				},
+				"ratePlanCode": {
+					"type": "string"
+				},
+				"start": {
+					"type": "string"
+				},
+				"end": {
+					"type": "string"
+				},
+				"description": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType"
+					}
+				},
+				"ratePlanName": {
+					"type": "string"
+				},
+				"cancelPenalties": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CancelPenaltiesType"
+				},
+				"guarantee": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Guarantee"
+				},
+				"ratePlanDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType"
+				},
+				"commission": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CommissionType"
+				},
+				"mealsIncluded": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.MealsIncluded"
+				},
+				"ratePlanID": {
+					"type": "string"
+				},
+				"bookingCode": {
+					"type": "string"
+				},
+				"ratePlanType": {
+					"type": "string"
+				},
+				"effectiveDate": {
+					"type": "string"
+				},
+				"expireDate": {
+					"type": "string"
+				},
+				"ratePlanInclusions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanInclusionsType"
+				},
+				"duration": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"decimalPlaces": {
+					"type": "string"
+				},
+				"ratePlanQualifier": {
+					"type": "boolean"
+				},
+				"ratePlanQualifierSpecified": {
+					"type": "boolean"
+				},
+				"ratePlanCategory": {
+					"type": "string"
+				},
+				"ratePlanCodeType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"ratePlanCodeTypeSpecified": {
+					"type": "boolean"
+				},
+				"ratePlanNotifTypeSpecified": {
+					"type": "boolean"
+				},
+				"ratePlanStatusType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"ratePlanStatusTypeSpecified": {
+					"type": "boolean"
+				},
+				"ratePlanNotifScopeType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"isCommissionable": {
+					"type": "boolean"
+				},
+				"rateReturn": {
+					"type": "boolean"
+				},
+				"yieldableIndicator": {
+					"type": "boolean"
+				},
+				"marketCode": {
+					"type": "string"
+				},
+				"yieldDeltaAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"inventoryAllocatedInd": {
+					"type": "boolean"
+				},
+				"restrictedDisplayIndicator": {
+					"type": "boolean"
+				},
+				"earliestStartIndicator": {
+					"type": "boolean"
+				},
+				"latestEndIndicator": {
+					"type": "boolean"
+				},
+				"extraNightRatePlanCode": {
+					"type": "string"
+				},
+				"baseRatePlanCode": {
+					"type": "string"
+				},
+				"adjustedAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"adjustedPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"floorAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"ceilingAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"adjustUpIndicator": {
+					"type": "boolean"
+				},
+				"chargeTypeCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ServiceRPHType": {
+			"type": "object",
+			"properties": {
+				"isPerRoom": {
+					"type": "boolean"
+				},
+				"rph": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RateDescription": {
+			"type": "object",
+			"properties": {
+				"image": {
+					"type": "string"
+				},
+				"text": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.TaxDescription": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AcceptedPaymentsTypeAcceptedPayment": {
+			"type": "object",
+			"properties": {
+				"paymentCard": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.PaymentCardType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.PaymentCardType": {
+			"type": "object",
+			"properties": {
+				"cardHolderName": {
+					"type": "string"
+				},
+				"cardNumber": {
+					"type": "string"
+				},
+				"expireDate": {
+					"type": "string"
+				},
+				"seriesCode": {
+					"type": "string"
+				},
+				"cardType": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"issuer": {
+					"type": "string"
+				},
+				"cardCode": {
+					"type": "string"
+				},
+				"secureInd": {
+					"type": "boolean"
+				},
+				"magneticStripe": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.EncryptionTokenType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"isTokinized": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RateType": {
+			"type": "object",
+			"properties": {
+				"rate": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Rate"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_OTA_HotelRatePlanRQRatePlan_TPA_ExtensionsType": {
+			"type": "object",
+			"properties": {
+				"adults": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"children": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"roomTypeID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.DateRange": {
+			"type": "object",
+			"properties": {
+				"start": {
+					"type": "string"
+				},
+				"end": {
+					"type": "string"
+				},
+				"duration": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidates": {
+			"type": "object",
+			"properties": {
+				"ratePlanCandidateList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidate"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.BookingRules": {
+			"type": "object",
+			"properties": {
+				"bookingRule": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.BookingRule"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CommissionType": {
+			"type": "object",
+			"properties": {
+				"comment": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ParagraphType"
+				},
+				"statusType": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.MealsIncluded": {
+			"type": "object",
+			"properties": {
+				"breakfast": {
+					"type": "boolean"
+				},
+				"lunch": {
+					"type": "boolean"
+				},
+				"dinner": {
+					"type": "boolean"
+				},
+				"dinnerSpecified": {
+					"type": "boolean"
+				},
+				"mealPlanIndicator": {
+					"type": "boolean"
+				},
+				"mealPlanCodes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanInclusionsType": {
+			"type": "object",
+			"properties": {
+				"taxInclusive": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.EncryptionTokenType": {
+			"type": "object",
+			"properties": {
+				"token": {
+					"type": "string"
+				},
+				"mask": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Rate": {
+			"type": "object",
+			"properties": {
+				"baseByGuestAmts": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.BaseByGuestAmts"
+				},
+				"additionalGuestAmounts": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalGuestAmounts"
+				},
+				"mealsIncluded": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.MealsIncluded"
+				},
+				"invCode": {
+					"type": "string"
+				},
+				"invTypeCode": {
+					"type": "string"
+				},
+				"ratePlanCode": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"start": {
+					"type": "string"
+				},
+				"end": {
+					"type": "string"
+				},
+				"sun": {
+					"type": "string"
+				},
+				"mon": {
+					"type": "string"
+				},
+				"tue": {
+					"type": "string"
+				},
+				"weds": {
+					"type": "string"
+				},
+				"thur": {
+					"type": "string"
+				},
+				"fri": {
+					"type": "string"
+				},
+				"sat": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"numberOfUnits": {
+					"type": "string"
+				},
+				"effectiveDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"expireDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"rateTypeCode": {
+					"type": "string"
+				},
+				"base": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Base"
+				},
+				"rateDescription": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RateDescription"
+				},
+				"fees": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.FeesType"
+				},
+				"rateTimeUnit": {
+					"type": "string"
+				},
+				"unitMultiplier": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidate": {
+			"type": "object",
+			"properties": {
+				"mealsIncluded": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.MealsIncluded"
+				},
+				"arrivalPolicy": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidatesTypeRatePlanCandidateArrivalPolicy"
+				},
+				"ratePlanCommission": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidatesTypeRatePlanCandidateRatePlanCommission"
+				},
+				"ratePlanType": {
+					"type": "string"
+				},
+				"ratePlanCode": {
+					"type": "string"
+				},
+				"ratePlanQualifier": {
+					"type": "boolean"
+				},
+				"ratePlanQualifierSpecified": {
+					"type": "boolean"
+				},
+				"ratePlanCategory": {
+					"type": "string"
+				},
+				"prepaidQualifier": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"prepaidQualifierSpecified": {
+					"type": "boolean"
+				},
+				"availRatesOnlyIndSpecified": {
+					"type": "boolean"
+				},
+				"hotelRefs": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelRefs"
+				},
+				"availRatesOnlyInd": {
+					"type": "string"
+				},
+				"ratePlanID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.BookingRule": {
+			"type": "object",
+			"properties": {
+				"lengthsOfStay": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.LengthsOfStay"
+				},
+				"restrictionStatus": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RestrictionStatus"
+				},
+				"start": {
+					"type": "string"
+				},
+				"end": {
+					"type": "string"
+				},
+				"sun": {
+					"type": "string"
+				},
+				"mon": {
+					"type": "string"
+				},
+				"tue": {
+					"type": "string"
+				},
+				"weds": {
+					"type": "string"
+				},
+				"thur": {
+					"type": "string"
+				},
+				"fri": {
+					"type": "string"
+				},
+				"sat": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.BaseByGuestAmts": {
+			"type": "object",
+			"properties": {
+				"baseByGuestAmt": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.BaseByGuestAmt"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalGuestAmounts": {
+			"type": "object",
+			"properties": {
+				"additionalGuestAmount": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalGuestAmount"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Base": {
+			"type": "object",
+			"properties": {
+				"amountBeforeTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"amountAfterTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"taxes": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Taxes"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidatesTypeRatePlanCandidateArrivalPolicy": {
+			"type": "object",
+			"properties": {
+				"guaranteePolicyIndicator": {
+					"type": "boolean"
+				},
+				"guaranteePolicyIndicatorSpecified": {
+					"type": "boolean"
+				},
+				"depositPolicyIndicator": {
+					"type": "boolean"
+				},
+				"depositPolicyIndicatorSpecified": {
+					"type": "boolean"
+				},
+				"holdTimePolicyIndicator": {
+					"type": "boolean"
+				},
+				"holdTimePolicyIndicatorSpecified": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RatePlanCandidatesTypeRatePlanCandidateRatePlanCommission": {
+			"type": "object",
+			"properties": {
+				"maxCommissionPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"maxCommissionPercentageSpecified": {
+					"type": "boolean"
+				},
+				"minCommissionPercentage": {
+					"format": "double",
+					"type": "number"
+				},
+				"minCommissionPercentageSpecified": {
+					"type": "boolean"
+				},
+				"commissionableIndicator": {
+					"type": "boolean"
+				},
+				"commissionableIndicatorSpecified": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelRefs": {
+			"type": "object",
+			"properties": {
+				"hotelRefList": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelRef"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.LengthsOfStay": {
+			"type": "object",
+			"properties": {
+				"lengthOfStay": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.LengthOfStay"
+					}
+				},
+				"arrivalDateBased": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RestrictionStatus": {
+			"type": "object",
+			"properties": {
+				"restriction": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"leadDays": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.BaseByGuestAmt": {
+			"type": "object",
+			"properties": {
+				"amountAfterTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"amountBeforeTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"ageQualifyingCode": {
+					"type": "string"
+				},
+				"numberOfGuests": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AdditionalGuestAmount": {
+			"type": "object",
+			"properties": {
+				"ageQualifyingCode": {
+					"type": "string"
+				},
+				"amount": {
+					"type": "string"
+				},
+				"taxInclusive": {
+					"type": "string"
+				},
+				"numberOfGuests": {
+					"type": "string"
+				},
+				"amountBeforeTax": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelRef": {
+			"type": "object",
+			"properties": {
+				"hotelCode": {
+					"type": "string"
+				},
+				"chainCode": {
+					"type": "string"
+				},
+				"brandCode": {
+					"type": "string"
+				},
+				"hotelCityCode": {
+					"type": "string"
+				},
+				"hotelName": {
+					"type": "string"
+				},
+				"hotelCodeContext": {
+					"type": "string"
+				},
+				"chainName": {
+					"type": "string"
+				},
+				"brandName": {
+					"type": "string"
+				},
+				"segmentCategoryCode": {
+					"type": "string"
+				},
+				"propertyClassCode": {
+					"type": "string"
+				},
+				"architecturalStyleCode": {
+					"type": "string"
+				},
+				"supplierIntegrationLevel": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.LengthOfStay": {
+			"type": "object",
+			"properties": {
+				"time": {
+					"type": "string"
+				},
+				"timeUnit": {
+					"type": "string"
+				},
+				"minMaxMessageType": {
+					"type": "string"
+				},
+				"loS_Pattern": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.LOS_Pattern"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.LOS_Pattern": {
+			"type": "object",
+			"properties": {
+				"fullPatternLOS": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_HotelResNotifRQ": {
+			"type": "object",
+			"properties": {
+				"hotelReservations": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.HotelReservations"
+				},
+				"resStatus": {
+					"type": "string"
+				},
+				"pos": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_POS"
+				},
+				"actionType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					],
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OBSOLETE_OTA_ReadRQ": {
+			"type": "object",
+			"properties": {
+				"readRequests": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OBSOLETE_ReadRequests"
+				},
+				"uniqueID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OBSOLETE_ReadRequests": {
+			"type": "object",
+			"properties": {
+				"hotelReadRequest": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelReadRequest"
+				},
+				"profileReadRequest": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ProfileReadRequest"
+				},
+				"readRequest": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA_ReadRQReadRequestsReadRequest"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HotelReadRequest": {
+			"type": "object",
+			"properties": {
+				"selectionCriteria": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ReadRQReadRequestsHotelReadRequestSelectionCriteria"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_OTA_ReadRQReadRequestsHotelReadRequest_TPA_Extensions"
+				},
+				"chainCode": {
+					"type": "string"
+				},
+				"hotelCode": {
+					"type": "string"
+				},
+				"hotelName": {
+					"type": "string"
+				},
+				"chainName": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ProfileReadRequest": {
+			"type": "object",
+			"properties": {
+				"uniqueID": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID1"
+					}
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ReadRQReadRequestsProfileReadRequestExtensions"
+				},
+				"company": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ContactPersonType"
+				},
+				"customer": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Customer"
+				},
+				"statusCode": {
+					"type": "string"
+				},
+				"profileTypeCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA_ReadRQReadRequestsReadRequest": {
+			"type": "object",
+			"properties": {
+				"uniuqeID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ReadRQReadRequestsHotelReadRequestSelectionCriteria": {
+			"type": "object",
+			"properties": {
+				"start": {
+					"type": "string"
+				},
+				"duration": {
+					"type": "string"
+				},
+				"end": {
+					"type": "string"
+				},
+				"dateType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2,
+						3
+					],
+					"type": "integer"
+				},
+				"dateTypeSpecified": {
+					"type": "boolean"
+				},
+				"selectionType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"selectionTypeSpecified": {
+					"type": "boolean"
+				},
+				"groupCode": {
+					"type": "string"
+				},
+				"resStatus": {
+					"type": "string"
+				},
+				"originalDeliveryMethodCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverByte_OTA_ReadRQReadRequestsHotelReadRequest_TPA_Extensions": {
+			"type": "object",
+			"properties": {
+				"includeExternalChannelOnly": {
+					"type": "boolean"
+				},
+				"freeText": {
+					"type": "string"
+				},
+				"includePlannedMaintenance": {
+					"type": "boolean"
+				},
+				"voucherNumber": {
+					"type": "string"
+				},
+				"fromCheckinDate": {
+					"type": "string"
+				},
+				"toCheckinDate": {
+					"type": "string"
+				},
+				"roomNumber": {
+					"type": "string"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID1": {
+			"type": "object",
+			"properties": {
+				"pinNumber": {
+					"type": "string"
+				},
+				"companyName": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CompanyNameType"
+				},
+				"url": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"instance": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"iD_Context": {
+					"type": "string"
+				},
+				"tpA_Extensions": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type_TPA_Extensions"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.OTA_ReadRQReadRequestsProfileReadRequestExtensions": {
+			"type": "object",
+			"properties": {
+				"freeText": {
+					"type": "string"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_HotelFolioRQ": {
+			"type": "object",
+			"properties": {
+				"pos": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_POS"
+				},
+				"uniqueID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				},
+				"silverbyte_CurrencyCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_HotelFolioRS": {
+			"type": "object",
+			"properties": {
+				"folios": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Folios"
+				},
+				"silverbyte_OriginalRequest": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				},
+				"warnings": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"replyTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.Folios": {
+			"type": "object",
+			"properties": {
+				"folio": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_Folio"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_Folio": {
+			"type": "object",
+			"properties": {
+				"folioID": {
+					"type": "string"
+				},
+				"invoiceID": {
+					"type": "string"
+				},
+				"revenueDetails": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueDetails"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueDetails": {
+			"type": "object",
+			"properties": {
+				"revenueDetail": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueDetail"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueDetail": {
+			"type": "object",
+			"properties": {
+				"referenceID": {
+					"type": "string"
+				},
+				"transactionDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"pmsRevenueCode": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"amount": {
+					"format": "double",
+					"type": "number"
+				},
+				"decimalPlaces": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"description": {
+					"type": "string"
+				},
+				"silverbyte_IsDebit": {
+					"type": "boolean"
+				},
+				"silverbyte_IsTax": {
+					"type": "boolean"
+				},
+				"silverbyte_TransactionCodeID": {
+					"type": "string"
+				},
+				"silverbyte_ExternalTransactionCodeID": {
+					"type": "string"
+				},
+				"silverbyte_InvoiceID": {
+					"type": "string"
+				},
+				"silverbyte_ExternalInvoiceID": {
+					"type": "string"
+				},
+				"extendedPrice": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ExtendedPrice"
+				},
+				"folioIDs": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.FolioIDsType"
+				},
+				"taxItems": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.TaxItems"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.ExtendedPrice": {
+			"type": "object",
+			"properties": {
+				"amountBeforeTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"amountAfterTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"quantity": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"decimalPlaces": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"currencyCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.FolioIDsType": {
+			"type": "object",
+			"properties": {
+				"folioID": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.TaxItems": {
+			"type": "object",
+			"properties": {
+				"tax": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.Tax"
+					}
+				},
+				"amount": {
+					"format": "double",
+					"type": "number"
+				},
+				"decimalPlaces": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"currencyCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.InvoicePostSpecification": {
+			"type": "object",
+			"properties": {
+				"sendTo": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"companyName": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"folioID": {
+					"type": "string"
+				},
+				"reservationID": {
+					"type": "string"
+				},
+				"transactions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"hotelID": {
+					"type": "string"
+				},
+				"guestSigntureBase64String": {
+					"type": "string"
+				},
+				"paymentAmount": {
+					"format": "double",
+					"type": "number"
+				},
+				"userCreated": {
+					"type": "string"
+				},
+				"pmsHotelID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.InvoicePostResult": {
+			"type": "object",
+			"properties": {
+				"result": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.HousekeepingStatusSpecification": {
+			"type": "object",
+			"properties": {
+				"isCleanRoom": {
+					"type": "boolean"
+				},
+				"isGetTowel": {
+					"type": "boolean"
+				},
+				"isBathroomProblem": {
+					"type": "boolean"
+				},
+				"isAirconditioningProblem": {
+					"type": "boolean"
+				},
+				"isDoNotDisturb": {
+					"type": "boolean"
+				},
+				"isDoNotForwardCalls": {
+					"type": "boolean"
+				},
+				"freeText": {
+					"type": "string"
+				},
+				"reservationID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.HousekeepingStatusUpdateResult": {
+			"type": "object",
+			"properties": {
+				"isSent": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.UpdateReservationCommentsRequest": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"comment": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.UpdateReservationCommentsResponse": {
+			"type": "object",
+			"properties": {
+				"result": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ReservationCreditCardRQ": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"pmsHotelID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ReservationCreditCardRS": {
+			"type": "object",
+			"properties": {
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"lastDigits": {
+					"type": "string"
+				},
+				"expireDate": {
+					"type": "string"
+				},
+				"errorMessage": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.CreateKadabraURLSpecification": {
+			"type": "object",
+			"properties": {
+				"pmsHotelID": {
+					"type": "string"
+				},
+				"pmsInternalReservationID": {
+					"type": "string"
+				},
+				"kadabraLinkType": {
+					"format": "int32",
+					"enum": [
+						0,
+						1,
+						2
+					],
+					"type": "integer"
+				},
+				"sendEMailToAddress": {
+					"type": "string"
+				},
+				"sendSMSToPhone": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.Common.CreateKadabraUrlResult": {
+			"type": "object",
+			"properties": {
+				"emailSentSuccessfully": {
+					"type": "boolean"
+				},
+				"smsSentSuccessfully": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ReservationExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"ids": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"guestPortalHotelIDs": {
+					"type": "array",
+					"items": {
+						"format": "int32",
+						"type": "integer"
+					}
+				},
+				"pmsHotelIDs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"guestPortalChainID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"pmsReservationPrivateKey": {
+					"type": "string"
+				},
+				"pmsInternalReservationID": {
+					"type": "string"
+				},
+				"pmsExternalReservationID": {
+					"type": "string"
+				},
+				"arrivalFromDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"arrivalToDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"departureFromDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"departureToDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"voucherNumber": {
+					"type": "string"
+				},
+				"reservationStatuses": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"isPrecheckinMailSent": {
+					"type": "boolean"
+				},
+				"isPrecheckoutMailSent": {
+					"type": "boolean"
+				},
+				"pmsInternalGuestIDs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"guestPhone": {
+					"type": "string"
+				},
+				"guestMobile": {
+					"type": "string"
+				},
+				"guestEmail": {
+					"type": "string"
+				},
+				"isGuestEmailNotEmpty": {
+					"type": "boolean"
+				},
+				"isGuestEmailOrPhoneNotEmpty": {
+					"type": "boolean"
+				},
+				"guestFirstName": {
+					"type": "string"
+				},
+				"guestLastName": {
+					"type": "string"
+				},
+				"guestPassport": {
+					"type": "string"
+				},
+				"guestIdentityCardNumber": {
+					"type": "string"
+				},
+				"freeTextGuestSearch": {
+					"type": "string"
+				},
+				"includeImages": {
+					"type": "boolean"
+				},
+				"includeReservationDetails": {
+					"type": "boolean"
+				},
+				"includeHotelCoordinates": {
+					"type": "boolean"
+				},
+				"includeWeatherData": {
+					"type": "boolean"
+				},
+				"includeG4HotelID": {
+					"type": "boolean"
+				},
+				"includeHotelWebSite": {
+					"type": "boolean"
+				},
+				"skipRows": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"maxRecords": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_ChargePostingRQ": {
+			"type": "object",
+			"properties": {
+				"pos": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_POS"
+				},
+				"propertyInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.BasicPropertyInfo"
+				},
+				"posting": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.PostingType"
+				},
+				"echoToken": {
+					"type": "string"
+				},
+				"timeStamp": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.PostingType": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"void": {
+					"type": "boolean"
+				},
+				"zoomInKey": {
+					"type": "string"
+				},
+				"businessPeriod": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"silverbyte_PaymentVoucher": {
+					"type": "string"
+				},
+				"silverbyte_FolioNumber": {
+					"type": "string"
+				},
+				"silverbyte_LinkToBonDetails": {
+					"type": "string"
+				},
+				"totalPostingAmount": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalPostingAmount_Type"
+				},
+				"transaction": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.TransactionType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.TotalPostingAmount_Type": {
+			"type": "object",
+			"properties": {
+				"amount": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.TransactionType": {
+			"type": "object",
+			"properties": {
+				"ticketID": {
+					"type": "string"
+				},
+				"digitsDailed": {
+					"type": "string"
+				},
+				"duration": {
+					"type": "string"
+				},
+				"extension": {
+					"type": "string"
+				},
+				"revenueDetails": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueDetails"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_ChargePostingRS": {
+			"type": "object",
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverbyteSingleItemRS"
+					}
+				},
+				"silverbyte_OriginalRequest": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				},
+				"warnings": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"replyTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverbyteSingleItemRS": {
+			"type": "object",
+			"properties": {
+				"referenceID": {
+					"type": "string"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_PaymentCardProcessingRQ": {
+			"type": "object",
+			"properties": {
+				"pos": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_POS"
+				},
+				"authorizationDetail": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AuthorizationDetail"
+				},
+				"stayInfo": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.StayInfo"
+				},
+				"silverbyte_TransactionCode": {
+					"type": "string"
+				},
+				"echoToken": {
+					"type": "string"
+				},
+				"timeStamp": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.AuthorizationDetail": {
+			"type": "object",
+			"properties": {
+				"creditCardAuthorization": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CreditCardAuthorization"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.StayInfo": {
+			"type": "object",
+			"properties": {
+				"hotelReservation": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.HotelReservation"
+				},
+				"reservationID": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				},
+				"revenueCategories": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueCategoriesType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CreditCardAuthorization": {
+			"type": "object",
+			"properties": {
+				"transactionType": {
+					"type": "string"
+				},
+				"amount": {
+					"type": "string"
+				},
+				"creditCard": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.CreditCard"
+				},
+				"id": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.UniqueID_Type"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueCategoriesType": {
+			"type": "object",
+			"properties": {
+				"revenueCategory": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueCategoryType"
+					}
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.CreditCard": {
+			"type": "object",
+			"properties": {
+				"cardHolderName": {
+					"type": "string"
+				},
+				"effectiveDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"effectiveDateSpecified": {
+					"type": "boolean"
+				},
+				"expirationDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"cardType": {
+					"type": "string"
+				},
+				"otherCardType": {
+					"type": "string"
+				},
+				"cardNumber": {
+					"type": "string"
+				},
+				"expireDate": {
+					"type": "string"
+				},
+				"seriesCode": {
+					"type": "string"
+				},
+				"cardNumberIsProxy": {
+					"type": "boolean"
+				},
+				"silverbyte_INT_OT": {
+					"type": "string"
+				},
+				"address": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.AddressType"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueCategoryType": {
+			"type": "object",
+			"properties": {
+				"revenueDetails": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.RevenueDetails"
+				}
+			}
+		},
+		"Silverbyte.Infra.Framework.IndustryStandards.OTA.HTNG_PaymentCardProcessingRS": {
+			"type": "object",
+			"properties": {
+				"receiptNumber": {
+					"type": "string"
+				},
+				"silverbyteItems": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SilverbyteSingleItemRS"
+					}
+				},
+				"silverbyte_OriginalRequest": {
+					"type": "string"
+				},
+				"success": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.SuccessType"
+				},
+				"errors": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.ErrorsType"
+				},
+				"warnings": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.IndustryStandards.OTA.WarningsType"
+				},
+				"correlationID": {
+					"type": "string"
+				},
+				"replyTo": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.RerouteFolioRequest": {
+			"type": "object",
+			"properties": {
+				"mainFolioID": {
+					"format": "double",
+					"type": "number"
+				},
+				"secondaryFolioIDs": {
+					"type": "array",
+					"items": {
+						"format": "double",
+						"type": "number"
+					}
+				},
+				"hotelID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.RerouteFolioResponse": {
+			"type": "object",
+			"properties": {
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.ExternalReservationValueSpecification": {
+			"type": "object",
+			"properties": {
+				"hotelID": {
+					"type": "string"
+				},
+				"reservationID": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"resultType": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4HotelsExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"hotelName": {
+					"type": "string"
+				},
+				"cityCode": {
+					"type": "string"
+				},
+				"regionID": {
+					"type": "string"
+				},
+				"languageIDs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"hotelIDs": {
+					"type": "array",
+					"items": {
+						"format": "int32",
+						"type": "integer"
+					}
+				},
+				"includeWeatherData": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4HotelDTO": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"hotelID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"names": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"descriptions": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"addresses": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"chainID": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"grade": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"displaySortOrder": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"cityCode": {
+					"type": "string"
+				},
+				"regionID": {
+					"type": "string"
+				},
+				"counrtyCode": {
+					"type": "string"
+				},
+				"vatPercent": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"vatIncluded": {
+					"type": "boolean"
+				},
+				"defaultCurrencyCode": {
+					"type": "string"
+				},
+				"primaryHotelID": {
+					"type": "string"
+				},
+				"pmsHotelCode": {
+					"type": "string"
+				},
+				"planCode": {
+					"type": "string"
+				},
+				"roomCategory": {
+					"type": "string"
+				},
+				"actualPrimaryHotelID": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"phone": {
+					"type": "string"
+				},
+				"longitude": {
+					"type": "string"
+				},
+				"latitude": {
+					"type": "string"
+				},
+				"websiteURL": {
+					"type": "string"
+				},
+				"weatherData": {
+					"$ref": "#/definitions/Silverbyte.Infra.Framework.Common.OpenWeatherMapData"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4LanguageExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"languageCode": {
+					"type": "string"
+				},
+				"languageID": {
+					"type": "string"
+				},
+				"languageIDs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4LanguageDTO": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"languageID": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4CitiesExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"cityCode": {
+					"type": "string"
+				},
+				"regionID": {
+					"type": "string"
+				},
+				"cityName": {
+					"type": "string"
+				},
+				"languageIDs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4CityDTO": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"cityCode": {
+					"type": "string"
+				},
+				"cityNames": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"countryCode": {
+					"type": "string"
+				},
+				"regionID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4RegionExternalSpecification": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"regionID": {
+					"type": "string"
+				},
+				"regionName": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.G4RegionDTO": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"regionID": {
+					"type": "string"
+				},
+				"names": {
+					"type": "object",
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"cityCodes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"hotelIds": {
+					"type": "array",
+					"items": {
+						"format": "int32",
+						"type": "integer"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.KadabraGlobalSettingsSpecification": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.RoomUpgradeRQ": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"newRoomType": {
+					"type": "string"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"currencyAmountBeforeTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"currencyAmountAfterTax": {
+					"format": "double",
+					"type": "number"
+				},
+				"hotelID": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.RoomUpgradeRS": {
+			"type": "object",
+			"properties": {
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.AddonUpgradeRQ": {
+			"type": "object",
+			"properties": {
+				"reservationID": {
+					"type": "string"
+				},
+				"hotelID": {
+					"type": "string"
+				},
+				"addonsDetails": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.AddonDetails"
+					}
+				},
+				"updateSourceUsername": {
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.AddonDetails": {
+			"type": "object",
+			"properties": {
+				"addonID": {
+					"type": "string"
+				},
+				"comments": {
+					"type": "string"
+				},
+				"isSecretOffer": {
+					"type": "boolean"
+				},
+				"dailyAddonPrices": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.DailyAddonPrice"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.DailyAddonPrice": {
+			"type": "object",
+			"properties": {
+				"quantity": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"currencyCode": {
+					"type": "string"
+				},
+				"amountPerRoom": {
+					"format": "double",
+					"type": "number"
+				},
+				"amountPerAdult": {
+					"format": "double",
+					"type": "number"
+				},
+				"amountPerChild": {
+					"format": "double",
+					"type": "number"
+				},
+				"amountPerInfant": {
+					"format": "double",
+					"type": "number"
+				},
+				"consumptionDate": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.AddonUpgradeRS": {
+			"type": "object",
+			"properties": {
+				"isSuccessful": {
+					"type": "boolean"
+				},
+				"errorMessage": {
+					"type": "string"
+				},
+				"addons": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.ReservationAddonsDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.TranslationLangaugeDTO": {
+			"type": "object",
+			"properties": {
+				"culture": {
+					"type": "string"
+				},
+				"translations": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Silverbyte.GuestPortal.ExternalCommon.TranslationDTO"
+					}
+				}
+			}
+		},
+		"Silverbyte.GuestPortal.ExternalCommon.TranslationDTO": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
